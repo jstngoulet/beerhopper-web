@@ -9,17 +9,23 @@ function setupTheme() {
     palette: {
       primary: {
         main: "#253D58",
+        contrastText: "#FFFFFF",
       },
       secondary: {
-        main: "#E6EEF2",
-        dark: "#CFDDE5",
+        main: "#535F70",
+        contrastText: "#FFFFFF",
       },
-      text: {
-        primary: "#555",
+      error: {
+        main: "#BA1A1A",
+        contrastText: "#FFFFFF",
       },
       background: {
-        paper: "#FFFFF",
         default: "#F8F9FF",
+        paper: "#F8F9FF",
+      },
+      text: {
+        primary: "#191C20",
+        secondary: "#43474E",
       },
     },
     shape: {
@@ -38,10 +44,13 @@ function setupTheme() {
         fontSize: "2.5rem",
       },
       body1: {
-        fontSize: "1.4rem",
+        fontSize: "1rem",
       },
       body2: {
-        fontSize: "1.2rem",
+        fontSize: "0.8rem",
+      },
+      caption: {
+        fontSize: "0.5rem",
       },
     },
     components: {
@@ -70,13 +79,64 @@ function setupTheme() {
       },
       MuiButton: {
         styleOverrides: {
-          //   borderRadius: 20,
-          //   fontWeight: "bold",
+          root: {
+            borderRadius: "12px",
+            padding: "8px 16px",
+            // textTransform: "none",
+            fontWeight: "bold",
+            transition: "all 0.3s ease",
+            "&:hover": {
+              boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+              backgroundColor: "rgba(54, 97, 142, 0.1)", // Lighter primary color
+            },
+            "&:active": {
+              boxShadow: "none",
+              backgroundColor: "rgba(54, 97, 142, 0.2)", // Darker primary color
+            },
+            "&.Mui-disabled": {
+              opacity: 0.5,
+              backgroundColor: "#D2E4FF", // Primary container color
+              color: "#73777F", // Outline color
+            },
+          },
+          contained: {
+            backgroundColor: "#36618E",
+            color: "#FFFFFF",
+            "&:hover": {
+              backgroundColor: "#2C5784", // Darker primary
+            },
+          },
+          outlined: {
+            borderColor: "#36618E",
+            color: "#36618E",
+            "&:hover": {
+              backgroundColor: "rgba(54, 97, 142, 0.1)",
+            },
+          },
+          text: {
+            color: "#36618E",
+            "&:hover": {
+              backgroundColor: "rgba(54, 97, 142, 0.05)",
+            },
+          },
+          sizeSmall: {
+            padding: "4px 8px",
+            fontSize: "0.875rem",
+          },
+          sizeLarge: {
+            padding: "12px 24px",
+            fontSize: "1.125rem",
+          },
         },
-        defaultProps: {
-          variant: "contained",
-          disableElevation: true,
-        },
+        // styleOverrides: {
+        //   //   borderRadius: 20,
+        //   //   fontWeight: "bold",
+
+        // },
+        // defaultProps: {
+        //   variant: "contained",
+        //   disableElevation: true,
+        // },
       },
       MuiStack: {
         defaultProps: {

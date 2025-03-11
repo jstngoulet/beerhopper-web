@@ -1,23 +1,24 @@
 import * as React from "react";
-import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-import InputBase from "@mui/material/InputBase";
 import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import theme from "../Theme";
-
-import SearchIcon from "@mui/icons-material/Search";
 import BuildIcon from "@mui/icons-material/Build";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import { Button } from "@mui/material";
 
+import logo from '../../assets/tool-icons/Beer_Hopper_Banner.png'
+
+import SearchIcon from "@mui/icons-material/Search";
+import InputBase from "@mui/material/InputBase";
+import { styled, alpha } from "@mui/material/styles";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -175,7 +176,7 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, position:"fixed", width: "100%", zIndex:999}}>
       <AppBar
         position="static"
         style={{
@@ -183,21 +184,24 @@ export default function PrimarySearchAppBar() {
         }}
       >
         <Toolbar>
-          <Button onClick={handleNavigateHome}>
-            <Typography
-              variant="h6"
-              noWrap
-              component="div"
-              sx={{ 
-                display: "block" ,
-                color: "white"  //  @TODO: Theme update
+          <Button
+            onClick={handleNavigateHome}
+            sx={{
+              "&:hover": {
+                backgroundColor: "inherit", // Prevent background color change on hover
+                boxShadow: "none", // Remove shadow on hover
+              },
+            }}
+          >
+            <img
+              src={logo}
+              alt="BeerHopper Logo"
+              style={{
+                height: "2.25em",
               }}
-            >
-              BeerHopper
-            </Typography>
+            />
           </Button>
-
-          {/* <Search>
+          <Search sx={{ flexGrow: 1 }}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
@@ -205,8 +209,7 @@ export default function PrimarySearchAppBar() {
               placeholder="Search…"
               inputProps={{ "aria-label": "search" }}
             />
-          </Search> */}
-          <Box sx={{ flexGrow: 1 }} />
+          </Search>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
               size="large"

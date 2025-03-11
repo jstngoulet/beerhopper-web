@@ -4,7 +4,6 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
-import theme from "../Theme";
 
 export interface SimpleCardProps {
   iconPath: string;
@@ -28,16 +27,22 @@ export default function SimpleCard({
   }
 
   return (
-    <div onClick={handleClick}>
+    <div onClick={handleClick} style={{ height: "100%" }}>
       <Card
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          flexDirection: "column",
+        sx={{
           height: "100%",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-        <CardActionArea>
+        <CardActionArea
+          sx={{
+            height: "100%",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "flex-start",
+          }}
+        >
           <CardMedia
             component="img"
             height={140}
@@ -47,7 +52,7 @@ export default function SimpleCard({
               objectFit: "contain",
             }}
           />
-          <CardContent>
+          <CardContent sx={{ flexGrow: 1 }}>
             <Typography gutterBottom variant="subtitle1" component="div">
               {name}
             </Typography>

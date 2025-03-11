@@ -1,6 +1,5 @@
 import { Button, Grid2 as Grid } from "@mui/material";
 import { JSX } from "react";
-import theme from "../Theme";
 
 export interface ButtonProps {
   text: string;

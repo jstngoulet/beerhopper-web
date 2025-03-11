@@ -6,6 +6,7 @@ import LoginPage from "./pages/Root/LoginPage";
 import Registration from "./pages/Root/RegistrationPage";
 import ToolsHomePage from "./pages/Root/ToolsHomePage";
 import InfusionStepToolPage from "./pages/Tools/InfuionStepToolPage";
+import ExplorePage from "./pages/Explore/ExplorePage";
 
 export default function Router(): React.JSX.Element {
   return (
@@ -15,7 +16,7 @@ export default function Router(): React.JSX.Element {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/tools" element={<ToolsHomePage />} />
-        <Route path="/explore" element={<ToolsHomePage />} />
+        <Route path="/explore" element={<ExplorePage />} />
 
         {/* Tool Routes */}
         <Route

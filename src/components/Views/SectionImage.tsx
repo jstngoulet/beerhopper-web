@@ -14,14 +14,13 @@ export default function SectionImage({
   altImage,
   flipped,
 }: SectionImageProps): JSX.Element {
-
   if (flipped) {
     return (
       <Grid
         container
         size={2}
         spacing={5}
-        columns={2}
+        columns={{ sm: 1, md: 2, lg: 2 }}
         paddingTop={5}
         paddingBottom={5}
       >
@@ -34,7 +33,7 @@ export default function SectionImage({
             alt={altImage}
             style={{
               width: "100%",
-              height: "100%",
+              height: "inherit",
               overflow: "hidden",
               objectFit: "cover",
             }}
@@ -45,16 +44,23 @@ export default function SectionImage({
   }
 
   return (
-    <Grid container size={2} spacing={5} columns={2} paddingTop={5} paddingBottom={5}>
+    <Grid
+      container
+      size={2}
+      spacing={5}
+      columns={{ sm: 1, md: 2, lg: 2 }}
+      paddingTop={5}
+      paddingBottom={5}
+    >
       <Grid size={1}>
         <img
           src={image}
           alt={altImage}
           style={{
             width: "100%",
-            height: "100%",
+            height: "inherit",
             overflow: "hidden",
-            objectFit:"cover" 
+            objectFit: "cover",
           }}
         />
       </Grid>

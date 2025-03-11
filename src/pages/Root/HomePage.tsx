@@ -16,6 +16,8 @@ import {
 } from "@mui/material";
 import { tools } from '../../models/api/AvailableTools'
 import { Link } from "react-router";
+import BeerImage from '../../assets/tool-icons/Default-Beer-Image.jpg';
+import BrewDayImage from '../../assets/tool-icons/Brew-Day.png'
 
 export default function HomePage(): JSX.Element {
   function handleLogin() {
@@ -88,9 +90,7 @@ export default function HomePage(): JSX.Element {
                 </List>
               </Box>
             }
-            image={
-              "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages7.alphacoders.com%2F288%2F288712.jpg&f=1&nofb=1&ipt=a0424b6dd46990ef58a6222523afc4592b1ffbc608c9d027833c15430354c47c&ipo=images"
-            }
+            image={BeerImage}
             altImage={"Beer Image"}
             flipped={false}
           />
@@ -116,7 +116,7 @@ export default function HomePage(): JSX.Element {
                 <Typography variant="subtitle1" component="h5" gutterBottom>
                   Included Tool Suite
                 </Typography>
-                <Typography variant="body2" component="h5" gutterBottom>
+                <Typography variant="body1" component="h5" gutterBottom>
                   Check out some of the included tools we offer to get you
                   started! These are also available during your brew session
                   when working with various recipes!
@@ -128,9 +128,7 @@ export default function HomePage(): JSX.Element {
                 ))}
               </Box>
             }
-            image={
-              "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimages7.alphacoders.com%2F288%2F288712.jpg&f=1&nofb=1&ipt=a0424b6dd46990ef58a6222523afc4592b1ffbc608c9d027833c15430354c47c&ipo=images"
-            }
+            image={BrewDayImage}
             altImage={"Beer Image"}
             flipped={true}
           />
