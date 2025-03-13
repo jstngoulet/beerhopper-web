@@ -1,6 +1,7 @@
 import { JSX, Suspense } from "react";
 import { Helmet } from "react-helmet";
 import ToolWrapperPageTemplate from "./ToolWrapperPage";
+import ImageView from "../../components/Views/ImageView";
 import TitleView from "../../components/Views/TitleView";
 import { Box, List, ListItem, Typography } from "@mui/material";
 import SplitContentNoteView from "../../components/Views/SplitContentNoteView";
@@ -8,11 +9,8 @@ import { NoteCardProps } from "../../components/cards/NoteCard";
 import FeatureSummaryCard, {
   FeatureSummaryCardProps,
 } from "../../components/cards/FeatureSummaryCard";
-import ImageBlurView from "../../components/Views/ImageBlurView";
 
-import InfusionStepImage from "../../assets/tool-icons/Infusion-Step-Calculator.webp";
-
-export default function InfusionStepToolPage(): JSX.Element {
+export default function AlcoholAndAttenuationToolPage(): JSX.Element {
   const note: NoteCardProps = {
     content: (
       <Box>
@@ -29,47 +27,56 @@ export default function InfusionStepToolPage(): JSX.Element {
     ),
   };
 
-  //   const toolInfo: FeatureSummaryCardProps = {
-  //     name: "",
-  //     description: "",
-  //     featureTitle: "",
-  //     listItems: [],
-  //     closingSummary: "",
-  //   };
+    // const toolInfo: FeatureSummaryCardProps = {
+    //   name: "",
+    //   description: "",
+    //   featureTitle: "",
+    //   listItems: [
+    //     {
+    //         boldText: "",
+    //         bodyText: ""
+    //     }
+    //   ],
+    //   closingSummary: "",
+    // };
 
   const toolInfo: FeatureSummaryCardProps = {
-    name: "Infusion Temperature Calculator",
+    name: "Alcohol and Attenuation Calculator",
     description:
-      "The Infusion Temperature Calculator is an essential tool for brewers looking to achieve precise mash temperatures when adding hot water to their grain bed. Whether you’re performing a step mash or correcting a mash that’s too cool, this calculator ensures you hit your target temperature every time.",
-    featureTitle: "Features:",
+      "The Alcohol and Attenuation Calculator is an indispensable tool for brewers to accurately determine the alcohol by volume (ABV) and apparent attenuation of their beer. Understanding these metrics helps gauge fermentation efficiency and predict the final flavor profile.",
+    featureTitle: "Features",
     listItems: [
       {
-        boldText: "Accurate Calculations",
+        boldText: "ABV Calculation",
         bodyText:
-          "Determine the temperature of the infusion water needed to reach your desired mash temperature.",
+          "Quickly determine the alcohol content based on original gravity (OG) and final gravity (FG).",
+      },
+      {
+        boldText: "Apparent Attenuation",
+        bodyText:
+          "Calculate the percentage of sugar converted to alcohol and CO₂.",
       },
       {
         boldText: "Custom Inputs",
         bodyText:
-          "Enter your current mash temperature, target temperature, mash volume, and grain weight.",
+          "Enter OG and FG with support for both specific gravity and °Plato.",
       },
       {
-        boldText: "Unit Flexibility",
-        bodyText: "Supports both Celsius and Fahrenheit for global usability.",
+        boldText: "Dual Unit Support",
+        bodyText: "Switch between metric and imperial measurements.",
       },
       {
-        boldText: "Efficiency Tips",
+        boldText: "Batch Logging",
+        bodyText: "Save calculated ABV and attenuation for each brew session.",
+      },
+      {
+        boldText: "Brewing Insights",
         bodyText:
-          "Get recommendations on water-to-grain ratios for optimal heat distribution.",
-      },
-      {
-        boldText: "Save Your Settings",
-        bodyText:
-          "Quickly recall your most common mash profiles for future brews.",
+          "Get tips on improving attenuation and achieving desired ABV.",
       },
     ],
     closingSummary:
-      "Achieve perfect mash temperatures without the guesswork—let the Infusion Temperature Calculator make your brew day smoother and more consistent! 🍻",
+      "Brew with confidence, knowing your beer’s strength and fermentation performance, with the Alcohol and Attenuation Calculator! 🍻",
   };
 
   return (
@@ -80,9 +87,13 @@ export default function InfusionStepToolPage(): JSX.Element {
       </Helmet>
       <Suspense>
         <ToolWrapperPageTemplate id={"infusion-step-tool"}>
-          <ImageBlurView image={InfusionStepImage} imageDescription="" />
+          <ImageView
+            path="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.sciencealert.com%2Fimages%2F2019-05%2Fprocessed%2Fegyptian_beer_cover_unsplash_1024.jpg&f=1&nofb=1&ipt=9837ccdd5fffc07508d07d11550b2eb6748acaa42b9cb0e9d1f306561657d352&ipo=images"
+            alt="Beer Cover Image"
+            maxHeight={250}
+          />
           <Box sx={{ margin: 2 }}>
-            <TitleView title="Infusion Step Tool" />
+            <TitleView title="Alcohol and Attenuation" />
             {/**
              * Should have the following elements:
              * • Type (Initi Strike vs Step Infusion)

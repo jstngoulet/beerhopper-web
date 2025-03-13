@@ -16,7 +16,7 @@ export default function SubtitleView({ text }: SubtitleViewProps): JSX.Element {
           color: theme.palette.text.secondary,
           margin: "auto",
           maxWidth: "75%",
-          padding: "0 1em 1em 0",
+          padding: "0 0em 1em 0",
         }}
       >
         {text}

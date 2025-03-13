@@ -8,11 +8,12 @@ import { NoteCardProps } from "../../components/cards/NoteCard";
 import FeatureSummaryCard, {
   FeatureSummaryCardProps,
 } from "../../components/cards/FeatureSummaryCard";
+
+
+import RefractometerConverterImage from "../../assets/tool-icons/Refractometer-Converter.webp";
 import ImageBlurView from "../../components/Views/ImageBlurView";
 
-import InfusionStepImage from "../../assets/tool-icons/Infusion-Step-Calculator.webp";
-
-export default function InfusionStepToolPage(): JSX.Element {
+export default function RefractometerToolPage(): JSX.Element {
   const note: NoteCardProps = {
     content: (
       <Box>
@@ -29,47 +30,56 @@ export default function InfusionStepToolPage(): JSX.Element {
     ),
   };
 
-  //   const toolInfo: FeatureSummaryCardProps = {
-  //     name: "",
-  //     description: "",
-  //     featureTitle: "",
-  //     listItems: [],
-  //     closingSummary: "",
-  //   };
+  // const toolInfo: FeatureSummaryCardProps = {
+  //   name: "",
+  //   description: "",
+  //   featureTitle: "",
+  //   listItems: [
+  //     {
+  //         boldText: "",
+  //         bodyText: ""
+  //     }
+  //   ],
+  //   closingSummary: "",
+  // };
 
   const toolInfo: FeatureSummaryCardProps = {
-    name: "Infusion Temperature Calculator",
+    name: "Refractometer Gravity Calculator",
     description:
-      "The Infusion Temperature Calculator is an essential tool for brewers looking to achieve precise mash temperatures when adding hot water to their grain bed. Whether you’re performing a step mash or correcting a mash that’s too cool, this calculator ensures you hit your target temperature every time.",
-    featureTitle: "Features:",
+      "The Refractometer Gravity Calculator is an essential tool for brewers who use a refractometer to measure wort gravity, especially during or after fermentation. Since alcohol skews refractometer readings, this tool accurately converts Brix or Plato measurements into specific gravity, giving you reliable data throughout the brewing process.",
+    featureTitle: "Features",
     listItems: [
       {
-        boldText: "Accurate Calculations",
+        boldText: "Accurate Gravity Conversion",
         bodyText:
-          "Determine the temperature of the infusion water needed to reach your desired mash temperature.",
+          "Adjusts for the presence of alcohol to give accurate specific gravity readings.",
       },
       {
         boldText: "Custom Inputs",
         bodyText:
-          "Enter your current mash temperature, target temperature, mash volume, and grain weight.",
+          "Enter your original gravity (OG) and current Brix/Plato reading.",
+      },
+      {
+        boldText: "Real-Time Calculations",
+        bodyText:
+          "Get corrected gravity instantly, eliminating manual math errors.",
       },
       {
         boldText: "Unit Flexibility",
-        bodyText: "Supports both Celsius and Fahrenheit for global usability.",
+        bodyText: "Supports both Brix and Plato as input values.",
       },
       {
-        boldText: "Efficiency Tips",
+        boldText: "Detailed Instructions",
         bodyText:
-          "Get recommendations on water-to-grain ratios for optimal heat distribution.",
+          "Learn how to properly use your refractometer and input accurate readings.",
       },
       {
-        boldText: "Save Your Settings",
-        bodyText:
-          "Quickly recall your most common mash profiles for future brews.",
+        boldText: "Batch Tracking",
+        bodyText: "Save and compare readings throughout fermentation.",
       },
     ],
     closingSummary:
-      "Achieve perfect mash temperatures without the guesswork—let the Infusion Temperature Calculator make your brew day smoother and more consistent! 🍻",
+      "Say goodbye to inaccurate post-fermentation readings—get precise gravity data with the Refractometer Gravity Calculator! 🍻",
   };
 
   return (
@@ -80,9 +90,9 @@ export default function InfusionStepToolPage(): JSX.Element {
       </Helmet>
       <Suspense>
         <ToolWrapperPageTemplate id={"infusion-step-tool"}>
-          <ImageBlurView image={InfusionStepImage} imageDescription="" />
+          <ImageBlurView image={RefractometerConverterImage} imageDescription="" />
           <Box sx={{ margin: 2 }}>
-            <TitleView title="Infusion Step Tool" />
+            <TitleView title="Refractometer Gravity" />
             {/**
              * Should have the following elements:
              * • Type (Initi Strike vs Step Infusion)

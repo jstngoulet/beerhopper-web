@@ -1,17 +1,24 @@
 import ToolProp from '../types/ToolProp';
 
+// Import the images
+import InfusionStepImage from "../../assets/tool-icons/Infusion-Step-Calculator.webp";
+import DecoctionVolumeImage from "../../assets/tool-icons/Decoction-Volume-Calculator.webp";
+import MashTempAdjusterImage from "../../assets/tool-icons/Mash-Temp-Adjuster.webp";
+import MashPhCalculatorImage from "../../assets/tool-icons/Mash-Ph-Calculator.webp";
+import YeastStarterCalculatorImage from '../../assets/tool-icons/Yeast-Starter-Calculator.webp'
+import RefractometerConverterImage from '../../assets/tool-icons/Refractometer-Converter.webp'
+
 export const tools: ToolProp[] = [
   {
-    imageIcon:
-      "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.iconscout.com%2Ficon%2Fpremium%2Fpng-256-thumb%2Fbrewery-manufacturing-3-907064.png&f=1&nofb=1&ipt=a5cac2fa85868420c9f271b2aba989aebab3d2dc7fa0b3381cb65cb7f51a48ff&ipo=images",
+    imageIcon: InfusionStepImage,
     name: "Infusion Step Tool",
     description:
       "The Infusion Step Tool is an essential tool for brewers looking to achieve precise mash temperatures when adding hot water to their grain bed. Whether you’re performing a step mash or correcting a mash that’s too cool, this calculator ensures you hit your target temperature every time.",
     active: true,
-    path: "/tools/infusion-step-tool",
+    path: "/tools/infusion-step",
   },
   {
-    imageIcon: "",
+    imageIcon: DecoctionVolumeImage,
     name: "Decoction Volume Tool",
     description:
       "The Decoction Volume Calculator is an indispensable tool for brewers utilizing traditional decoction mashing techniques. It helps you calculate the exact volume of mash to remove, boil, and return to the main mash in order to reach your desired temperature step. Perfect for brewing rich, complex lagers and traditional European styles!",
@@ -19,7 +26,7 @@ export const tools: ToolProp[] = [
     path: "/tools/decoction-volume",
   },
   {
-    imageIcon: "",
+    imageIcon: MashTempAdjusterImage,
     name: "Mash Adjust",
     description:
       "The Mash Temperature Adjuster is a practical tool for brewers who need to fine-tune their mash temperature after an initial reading. Whether your mash is too hot or too cold, this tool calculates the precise volume and temperature of hot or cold water needed to bring your mash to the perfect temperature.",
@@ -27,7 +34,7 @@ export const tools: ToolProp[] = [
     path: "/tools/mash-adjust",
   },
   {
-    imageIcon: "",
+    imageIcon: MashPhCalculatorImage,
     name: "Mash pH",
     description:
       "The Mash pH Calculator is an essential tool for brewers aiming to achieve optimal enzyme activity and flavor profile by accurately predicting and adjusting mash pH. Maintaining the right mash pH (typically between 5.2 and 5.6) is crucial for proper starch conversion and balanced beer flavor.",
@@ -35,7 +42,7 @@ export const tools: ToolProp[] = [
     path: "/tools/mash-ph",
   },
   {
-    imageIcon: "",
+    imageIcon: YeastStarterCalculatorImage,
     name: "Yeast Starter",
     description:
       "The Yeast Starter Calculator is an invaluable tool for brewers looking to build healthy, vigorous yeast cell counts before pitching. Proper yeast propagation ensures strong fermentation, reduces lag time, and improves the overall quality of your beer—especially for high-gravity brews or lagers.",
@@ -43,7 +50,7 @@ export const tools: ToolProp[] = [
     path: "/tools/yeast-starter",
   },
   {
-    imageIcon: "",
+    imageIcon: RefractometerConverterImage,
     name: "Refactometer",
     description:
       "The Refractometer to Gravity Calculator is an essential tool for brewers who use a refractometer to measure wort gravity, especially after fermentation has started. Since alcohol distorts refractometer readings, this calculator corrects the measurement to provide an accurate specific gravity or Brix value.",
@@ -56,7 +63,7 @@ export const tools: ToolProp[] = [
     description:
       "The Alcohol and Attenuation Calculator is an indispensable tool for brewers to accurately determine the alcohol by volume (ABV) and apparent attenuation of their beer. Understanding these metrics helps gauge fermentation efficiency and predict the final flavor profile.",
     active: false,
-    path: "/tools/alchol-and-attenuation",
+    path: "/tools/alcohol-and-attenuation",
   },
   {
     imageIcon: "",
@@ -135,6 +142,6 @@ export const tools: ToolProp[] = [
   //     name: "",
   //     description: "",
   //   },
-]
+];
 // .filter((item) => item.active)
-.sort((a, b) => (a.name > b.name ? 1 : -1));
+// .sort((a, b) => (a.name > b.name ? 1 : -1));

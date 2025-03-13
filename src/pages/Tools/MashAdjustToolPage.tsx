@@ -8,11 +8,10 @@ import { NoteCardProps } from "../../components/cards/NoteCard";
 import FeatureSummaryCard, {
   FeatureSummaryCardProps,
 } from "../../components/cards/FeatureSummaryCard";
+import MashTempAdjusterImage from "../../assets/tool-icons/Mash-Temp-Adjuster.webp";
 import ImageBlurView from "../../components/Views/ImageBlurView";
 
-import InfusionStepImage from "../../assets/tool-icons/Infusion-Step-Calculator.webp";
-
-export default function InfusionStepToolPage(): JSX.Element {
+export default function MashAdjustToolPage(): JSX.Element {
   const note: NoteCardProps = {
     content: (
       <Box>
@@ -29,24 +28,29 @@ export default function InfusionStepToolPage(): JSX.Element {
     ),
   };
 
-  //   const toolInfo: FeatureSummaryCardProps = {
-  //     name: "",
-  //     description: "",
-  //     featureTitle: "",
-  //     listItems: [],
-  //     closingSummary: "",
-  //   };
+  // const toolInfo: FeatureSummaryCardProps = {
+  //   name: "",
+  //   description: "",
+  //   featureTitle: "",
+  //   listItems: [
+  //     {
+  //         boldText: "",
+  //         bodyText: ""
+  //     }
+  //   ],
+  //   closingSummary: "",
+  // };
 
   const toolInfo: FeatureSummaryCardProps = {
-    name: "Infusion Temperature Calculator",
+    name: "Mash Temperature Adjuster",
     description:
-      "The Infusion Temperature Calculator is an essential tool for brewers looking to achieve precise mash temperatures when adding hot water to their grain bed. Whether you’re performing a step mash or correcting a mash that’s too cool, this calculator ensures you hit your target temperature every time.",
-    featureTitle: "Features:",
+      "The Mash Temperature Adjuster is a practical tool for brewers who need to fine-tune their mash temperature after an initial reading. Whether your mash is too hot or too cold, this tool calculates the precise volume and temperature of hot or cold water needed to bring your mash to the perfect temperature.",
+    featureTitle: "Features",
     listItems: [
       {
-        boldText: "Accurate Calculations",
+        boldText: "Accurate Adjustments",
         bodyText:
-          "Determine the temperature of the infusion water needed to reach your desired mash temperature.",
+          "Calculate the amount and temperature of infusion water needed to hit your desired mash temperature.",
       },
       {
         boldText: "Custom Inputs",
@@ -54,22 +58,23 @@ export default function InfusionStepToolPage(): JSX.Element {
           "Enter your current mash temperature, target temperature, mash volume, and grain weight.",
       },
       {
-        boldText: "Unit Flexibility",
-        bodyText: "Supports both Celsius and Fahrenheit for global usability.",
+        boldText: "Unit Options",
+        bodyText:
+          "Supports both Celsius and Fahrenheit for worldwide compatibility.",
       },
       {
-        boldText: "Efficiency Tips",
+        boldText: "Fast Calculations",
         bodyText:
-          "Get recommendations on water-to-grain ratios for optimal heat distribution.",
+          "Get results instantly to make on-the-fly adjustments without interrupting your brew day.",
       },
       {
-        boldText: "Save Your Settings",
+        boldText: "Helpful Tips",
         bodyText:
-          "Quickly recall your most common mash profiles for future brews.",
+          "Learn best practices for adding hot or cold water without disturbing your mash consistency.",
       },
     ],
     closingSummary:
-      "Achieve perfect mash temperatures without the guesswork—let the Infusion Temperature Calculator make your brew day smoother and more consistent! 🍻",
+      "Take control of your mash and perfect your brew with the Mash Temperature Adjuster! 🍻",
   };
 
   return (
@@ -80,9 +85,9 @@ export default function InfusionStepToolPage(): JSX.Element {
       </Helmet>
       <Suspense>
         <ToolWrapperPageTemplate id={"infusion-step-tool"}>
-          <ImageBlurView image={InfusionStepImage} imageDescription="" />
+          <ImageBlurView image={MashTempAdjusterImage} imageDescription="" />
           <Box sx={{ margin: 2 }}>
-            <TitleView title="Infusion Step Tool" />
+            <TitleView title="Mash Adjust Tool" />
             {/**
              * Should have the following elements:
              * • Type (Initi Strike vs Step Infusion)

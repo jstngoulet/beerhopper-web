@@ -8,11 +8,11 @@ import { NoteCardProps } from "../../components/cards/NoteCard";
 import FeatureSummaryCard, {
   FeatureSummaryCardProps,
 } from "../../components/cards/FeatureSummaryCard";
+
+import MashPhCalculatorImage from "../../assets/tool-icons/Mash-Ph-Calculator.webp";
 import ImageBlurView from "../../components/Views/ImageBlurView";
 
-import InfusionStepImage from "../../assets/tool-icons/Infusion-Step-Calculator.webp";
-
-export default function InfusionStepToolPage(): JSX.Element {
+export default function MashPhToolPage(): JSX.Element {
   const note: NoteCardProps = {
     content: (
       <Box>
@@ -29,47 +29,56 @@ export default function InfusionStepToolPage(): JSX.Element {
     ),
   };
 
-  //   const toolInfo: FeatureSummaryCardProps = {
-  //     name: "",
-  //     description: "",
-  //     featureTitle: "",
-  //     listItems: [],
-  //     closingSummary: "",
-  //   };
+  // const toolInfo: FeatureSummaryCardProps = {
+  //   name: "",
+  //   description: "",
+  //   featureTitle: "",
+  //   listItems: [
+  //     {
+  //         boldText: "",
+  //         bodyText: ""
+  //     }
+  //   ],
+  //   closingSummary: "",
+  // };
 
   const toolInfo: FeatureSummaryCardProps = {
-    name: "Infusion Temperature Calculator",
+    name: "Mash pH Calculator",
     description:
-      "The Infusion Temperature Calculator is an essential tool for brewers looking to achieve precise mash temperatures when adding hot water to their grain bed. Whether you’re performing a step mash or correcting a mash that’s too cool, this calculator ensures you hit your target temperature every time.",
-    featureTitle: "Features:",
+      "The Mash pH Calculator is an essential tool for brewers aiming to achieve optimal enzyme activity and flavor profile by accurately predicting and adjusting mash pH. Maintaining the right mash pH (typically between 5.2 and 5.6) is crucial for proper starch conversion and balanced beer flavor.",
+    featureTitle: "Features",
     listItems: [
       {
-        boldText: "Accurate Calculations",
+        boldText: "Accurate pH Prediction",
         bodyText:
-          "Determine the temperature of the infusion water needed to reach your desired mash temperature.",
+          "Estimate mash pH based on grain bill composition, water chemistry, and additives.",
+      },
+      {
+        boldText: "Adjustment Recommendations",
+        bodyText:
+          "Get precise additions of acids (like lactic or phosphoric) or brewing salts (like gypsum or calcium chloride) to hit your target pH.",
       },
       {
         boldText: "Custom Inputs",
         bodyText:
-          "Enter your current mash temperature, target temperature, mash volume, and grain weight.",
+          "Enter water profile, grain bill, and any pre-treatment additions.",
       },
       {
         boldText: "Unit Flexibility",
-        bodyText: "Supports both Celsius and Fahrenheit for global usability.",
+        bodyText: "Supports both metric and imperial measurements.",
       },
       {
-        boldText: "Efficiency Tips",
-        bodyText:
-          "Get recommendations on water-to-grain ratios for optimal heat distribution.",
+        boldText: "Real-Time Results",
+        bodyText: "Instantly see how adjustments will affect your mash pH.",
       },
       {
-        boldText: "Save Your Settings",
+        boldText: "Expert Tips",
         bodyText:
-          "Quickly recall your most common mash profiles for future brews.",
+          "Guidance on common acid and salt choices for different beer styles.",
       },
     ],
     closingSummary:
-      "Achieve perfect mash temperatures without the guesswork—let the Infusion Temperature Calculator make your brew day smoother and more consistent! 🍻",
+      "Achieve the perfect mash pH for a clean, balanced brew with the Mash pH Calculator! 🍻",
   };
 
   return (
@@ -80,9 +89,9 @@ export default function InfusionStepToolPage(): JSX.Element {
       </Helmet>
       <Suspense>
         <ToolWrapperPageTemplate id={"infusion-step-tool"}>
-          <ImageBlurView image={InfusionStepImage} imageDescription="" />
+          <ImageBlurView image={MashPhCalculatorImage} imageDescription="" />
           <Box sx={{ margin: 2 }}>
-            <TitleView title="Infusion Step Tool" />
+            <TitleView title="Mash pH" />
             {/**
              * Should have the following elements:
              * • Type (Initi Strike vs Step Infusion)

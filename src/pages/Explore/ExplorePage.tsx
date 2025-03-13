@@ -18,7 +18,7 @@ export default function ExplorePage(): JSX.Element {
         />
       </Helmet>
       <Suspense>
-        <PageTemplate id="login-page">
+        <PageTemplate id="explore-page">
           <Navbar />
           <Box>
             <Grid container columns={4} direction={"row"}>

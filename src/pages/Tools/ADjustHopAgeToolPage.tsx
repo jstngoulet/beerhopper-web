@@ -1,6 +1,7 @@
 import { JSX, Suspense } from "react";
 import { Helmet } from "react-helmet";
 import ToolWrapperPageTemplate from "./ToolWrapperPage";
+import ImageView from "../../components/Views/ImageView";
 import TitleView from "../../components/Views/TitleView";
 import { Box, List, ListItem, Typography } from "@mui/material";
 import SplitContentNoteView from "../../components/Views/SplitContentNoteView";
@@ -8,11 +9,8 @@ import { NoteCardProps } from "../../components/cards/NoteCard";
 import FeatureSummaryCard, {
   FeatureSummaryCardProps,
 } from "../../components/cards/FeatureSummaryCard";
-import ImageBlurView from "../../components/Views/ImageBlurView";
 
-import InfusionStepImage from "../../assets/tool-icons/Infusion-Step-Calculator.webp";
-
-export default function InfusionStepToolPage(): JSX.Element {
+export default function AdjustHopAgeToolPage(): JSX.Element {
   const note: NoteCardProps = {
     content: (
       <Box>
@@ -29,47 +27,57 @@ export default function InfusionStepToolPage(): JSX.Element {
     ),
   };
 
-  //   const toolInfo: FeatureSummaryCardProps = {
-  //     name: "",
-  //     description: "",
-  //     featureTitle: "",
-  //     listItems: [],
-  //     closingSummary: "",
-  //   };
+  // const toolInfo: FeatureSummaryCardProps = {
+  //   name: "",
+  //   description: "",
+  //   featureTitle: "",
+  //   listItems: [
+  //     {
+  //         boldText: "",
+  //         bodyText: ""
+  //     }
+  //   ],
+  //   closingSummary: "",
+  // };
 
   const toolInfo: FeatureSummaryCardProps = {
-    name: "Infusion Temperature Calculator",
+    name: "Hop Age Calculator",
     description:
-      "The Infusion Temperature Calculator is an essential tool for brewers looking to achieve precise mash temperatures when adding hot water to their grain bed. Whether you’re performing a step mash or correcting a mash that’s too cool, this calculator ensures you hit your target temperature every time.",
-    featureTitle: "Features:",
+      "The Hop Age Calculator is a vital tool for brewers looking to assess the freshness and potency of their hops. Over time, hops lose alpha acids and aromatic compounds, which can significantly impact bitterness and flavor. This calculator helps you accurately estimate the remaining alpha acid percentage based on storage conditions and age.",
+    featureTitle: "Features",
     listItems: [
       {
-        boldText: "Accurate Calculations",
+        boldText: "Alpha Acid Degradation",
         bodyText:
-          "Determine the temperature of the infusion water needed to reach your desired mash temperature.",
+          "Calculate the remaining alpha acid percentage based on storage time and temperature.",
       },
       {
         boldText: "Custom Inputs",
         bodyText:
-          "Enter your current mash temperature, target temperature, mash volume, and grain weight.",
+          "Enter the original alpha acid content, storage temperature, and hop age.",
+      },
+      {
+        boldText: "Storage Factor Adjustment",
+        bodyText: "Account for vacuum-sealed or oxygen-exposed hops.",
+      },
+      {
+        boldText: "Accurate IBU Predictions",
+        bodyText:
+          "Adjust your recipes to maintain consistent bitterness despite aging hops.",
+      },
+      {
+        boldText: "Useful Tips",
+        bodyText:
+          "Learn best practices for storing hops to preserve freshness.",
       },
       {
         boldText: "Unit Flexibility",
-        bodyText: "Supports both Celsius and Fahrenheit for global usability.",
-      },
-      {
-        boldText: "Efficiency Tips",
         bodyText:
-          "Get recommendations on water-to-grain ratios for optimal heat distribution.",
-      },
-      {
-        boldText: "Save Your Settings",
-        bodyText:
-          "Quickly recall your most common mash profiles for future brews.",
+          "Supports alpha acid content in both percentage and IBU calculations.",
       },
     ],
     closingSummary:
-      "Achieve perfect mash temperatures without the guesswork—let the Infusion Temperature Calculator make your brew day smoother and more consistent! 🍻",
+      "Maintain consistent bitterness and flavor profiles in your brews with the Hop Age Calculator! 🍻",
   };
 
   return (
@@ -80,9 +88,13 @@ export default function InfusionStepToolPage(): JSX.Element {
       </Helmet>
       <Suspense>
         <ToolWrapperPageTemplate id={"infusion-step-tool"}>
-          <ImageBlurView image={InfusionStepImage} imageDescription="" />
+          <ImageView
+            path="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.sciencealert.com%2Fimages%2F2019-05%2Fprocessed%2Fegyptian_beer_cover_unsplash_1024.jpg&f=1&nofb=1&ipt=9837ccdd5fffc07508d07d11550b2eb6748acaa42b9cb0e9d1f306561657d352&ipo=images"
+            alt="Beer Cover Image"
+            maxHeight={250}
+          />
           <Box sx={{ margin: 2 }}>
-            <TitleView title="Infusion Step Tool" />
+            <TitleView title="Hop Age" />
             {/**
              * Should have the following elements:
              * • Type (Initi Strike vs Step Infusion)

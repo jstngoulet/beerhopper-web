@@ -4,6 +4,8 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import CardActionArea from "@mui/material/CardActionArea";
+import { Box } from "@mui/material";
+import Spacer from "../common/Spacer";
 
 export interface SimpleCardProps {
   iconPath: string;
@@ -43,15 +45,38 @@ export default function SimpleCard({
             justifyContent: "flex-start",
           }}
         >
+          <Box
+            sx={{
+              position: "absolute",
+              top: 0,
+              left: 0,
+              width: "100%",
+              height: 120 + 15 + 15,  //  15 is the padding on top and bottom
+              backgroundImage: `url(${
+                !isImageEmpty ? iconPath : defaultToolImage
+              })`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              filter: "blur(15px)", // Apply blur effect
+              opacity: 0.5, // Adjust opacity to make it subtle
+              zIndex: 0, // Make sure the background is underneath
+            }}
+          />
           <CardMedia
             component="img"
-            height={140}
             image={!isImageEmpty ? iconPath : defaultToolImage}
             alt={name}
             sx={{
-              objectFit: "contain",
+              width: 120, // Icon size
+              height: 120, // Icon size
+              borderRadius: 1, // Rounded corners for app icon look
+              boxShadow: "0 8px 16px rgba(0,0,0,0.2)", // Subtle shadow for floating effect
+              objectFit: "cover",
+              margin: "15px",
+              zIndex: 1
             }}
           />
+          <Spacer />
           <CardContent sx={{ flexGrow: 1 }}>
             <Typography gutterBottom variant="subtitle1" component="div">
               {name}

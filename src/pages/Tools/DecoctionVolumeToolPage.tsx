@@ -8,11 +8,10 @@ import { NoteCardProps } from "../../components/cards/NoteCard";
 import FeatureSummaryCard, {
   FeatureSummaryCardProps,
 } from "../../components/cards/FeatureSummaryCard";
+import DecoctionVolumeImage from "../../assets/tool-icons/Decoction-Volume-Calculator.webp";
 import ImageBlurView from "../../components/Views/ImageBlurView";
 
-import InfusionStepImage from "../../assets/tool-icons/Infusion-Step-Calculator.webp";
-
-export default function InfusionStepToolPage(): JSX.Element {
+export default function DecocotionVolumeToolPage(): JSX.Element {
   const note: NoteCardProps = {
     content: (
       <Box>
@@ -29,47 +28,51 @@ export default function InfusionStepToolPage(): JSX.Element {
     ),
   };
 
-  //   const toolInfo: FeatureSummaryCardProps = {
-  //     name: "",
-  //     description: "",
-  //     featureTitle: "",
-  //     listItems: [],
-  //     closingSummary: "",
-  //   };
+  // const toolInfo: FeatureSummaryCardProps = {
+  //   name: "",
+  //   description: "",
+  //   featureTitle: "",
+  //   listItems: [
+  //     {
+  //         boldText: "",
+  //         bodyText: ""
+  //     }
+  //   ],
+  //   closingSummary: "",
+  // };
 
   const toolInfo: FeatureSummaryCardProps = {
-    name: "Infusion Temperature Calculator",
+    name: "Decoction Volume",
     description:
-      "The Infusion Temperature Calculator is an essential tool for brewers looking to achieve precise mash temperatures when adding hot water to their grain bed. Whether you’re performing a step mash or correcting a mash that’s too cool, this calculator ensures you hit your target temperature every time.",
-    featureTitle: "Features:",
+      "The Decoction Volume Calculator is an indispensable tool for brewers utilizing traditional decoction mashing techniques. It helps you calculate the exact volume of mash to remove, boil, and return to the main mash in order to reach your desired temperature step. Perfect for brewing rich, complex lagers and traditional European styles!",
+    featureTitle: "Features",
     listItems: [
       {
-        boldText: "Accurate Calculations",
+        boldText: "Precise Volume Calculation",
         bodyText:
-          "Determine the temperature of the infusion water needed to reach your desired mash temperature.",
+          "Determine the amount of mash to decoct to achieve your target temperature increase.",
       },
       {
         boldText: "Custom Inputs",
         bodyText:
-          "Enter your current mash temperature, target temperature, mash volume, and grain weight.",
+          "Enter current mash temperature, target temperature, grain weight, and mash thickness.",
       },
       {
-        boldText: "Unit Flexibility",
-        bodyText: "Supports both Celsius and Fahrenheit for global usability.",
+        boldText: "Temperature Unit Flexibility",
+        bodyText: "Supports both Celsius and Fahrenheit.",
       },
       {
-        boldText: "Efficiency Tips",
+        boldText: "Multi-Step Support",
+        bodyText: "Calculate volumes for single, double, or triple decoctions.",
+      },
+      {
+        boldText: "Expert Tips",
         bodyText:
-          "Get recommendations on water-to-grain ratios for optimal heat distribution.",
-      },
-      {
-        boldText: "Save Your Settings",
-        bodyText:
-          "Quickly recall your most common mash profiles for future brews.",
+          "Get guidance on boiling duration and mash consistency to maintain flavor and body.",
       },
     ],
     closingSummary:
-      "Achieve perfect mash temperatures without the guesswork—let the Infusion Temperature Calculator make your brew day smoother and more consistent! 🍻",
+      "Master the art of decoction mashing and elevate your traditional brews with confidence using the Decoction Volume Calculator! 🍻",
   };
 
   return (
@@ -80,9 +83,9 @@ export default function InfusionStepToolPage(): JSX.Element {
       </Helmet>
       <Suspense>
         <ToolWrapperPageTemplate id={"infusion-step-tool"}>
-          <ImageBlurView image={InfusionStepImage} imageDescription="" />
+          <ImageBlurView image={DecoctionVolumeImage} imageDescription="" />
           <Box sx={{ margin: 2 }}>
-            <TitleView title="Infusion Step Tool" />
+            <TitleView title="Decoction Volume Calculator" />
             {/**
              * Should have the following elements:
              * • Type (Initi Strike vs Step Infusion)

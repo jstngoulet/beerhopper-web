@@ -16,8 +16,8 @@ import {
 } from "@mui/material";
 import { tools } from '../../models/api/AvailableTools'
 import { Link } from "react-router";
-import BeerImage from '../../assets/tool-icons/Default-Beer-Image.jpg';
-import BrewDayImage from '../../assets/tool-icons/Brew-Day.png'
+import BeerImage from '../../assets/HomePage/Default-Beer-Image.jpg';
+import BrewDayImage from '../../assets/HomePage/Brew-Day.png'
 
 export default function HomePage(): JSX.Element {
   function handleLogin() {

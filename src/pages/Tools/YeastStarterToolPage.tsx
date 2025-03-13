@@ -8,11 +8,11 @@ import { NoteCardProps } from "../../components/cards/NoteCard";
 import FeatureSummaryCard, {
   FeatureSummaryCardProps,
 } from "../../components/cards/FeatureSummaryCard";
+
+import YeastStarterCalculatorImage from "../../assets/tool-icons/Yeast-Starter-Calculator.webp";
 import ImageBlurView from "../../components/Views/ImageBlurView";
 
-import InfusionStepImage from "../../assets/tool-icons/Infusion-Step-Calculator.webp";
-
-export default function InfusionStepToolPage(): JSX.Element {
+export default function YeastStarterToolPage(): JSX.Element {
   const note: NoteCardProps = {
     content: (
       <Box>
@@ -29,47 +29,56 @@ export default function InfusionStepToolPage(): JSX.Element {
     ),
   };
 
-  //   const toolInfo: FeatureSummaryCardProps = {
-  //     name: "",
-  //     description: "",
-  //     featureTitle: "",
-  //     listItems: [],
-  //     closingSummary: "",
-  //   };
+  // const toolInfo: FeatureSummaryCardProps = {
+  //   name: "",
+  //   description: "",
+  //   featureTitle: "",
+  //   listItems: [
+  //     {
+  //         boldText: "",
+  //         bodyText: ""
+  //     }
+  //   ],
+  //   closingSummary: "",
+  // };
 
   const toolInfo: FeatureSummaryCardProps = {
-    name: "Infusion Temperature Calculator",
+    name: "Yeast Starter Calculator",
     description:
-      "The Infusion Temperature Calculator is an essential tool for brewers looking to achieve precise mash temperatures when adding hot water to their grain bed. Whether you’re performing a step mash or correcting a mash that’s too cool, this calculator ensures you hit your target temperature every time.",
-    featureTitle: "Features:",
+      "The Yeast Starter Calculator is an invaluable tool for brewers looking to build healthy, vigorous yeast cell counts before pitching. Proper yeast propagation ensures strong fermentation, reduces lag time, and improves the overall quality of your beer—especially for high-gravity brews or lagers.",
+    featureTitle: "Features",
     listItems: [
       {
-        boldText: "Accurate Calculations",
+        boldText: "Pitch Rate Precision",
         bodyText:
-          "Determine the temperature of the infusion water needed to reach your desired mash temperature.",
+          "Calculate the optimal starter size based on wort volume, gravity, and yeast strain.",
+      },
+      {
+        boldText: "Growth Prediction",
+        bodyText:
+          "Estimate cell count increase based on starter volume and aeration method.",
       },
       {
         boldText: "Custom Inputs",
         bodyText:
-          "Enter your current mash temperature, target temperature, mash volume, and grain weight.",
+          "Enter original gravity, batch size, yeast viability, and starter method (shaken, stirred, or stir plate).",
+      },
+      {
+        boldText: "Step-Up Starters",
+        bodyText: "Plan multi-step starters for large or high-gravity batches.",
+      },
+      {
+        boldText: "Simple Instructions",
+        bodyText:
+          "Clear guidance on how to create and manage your starter for peak yeast health.",
       },
       {
         boldText: "Unit Flexibility",
-        bodyText: "Supports both Celsius and Fahrenheit for global usability.",
-      },
-      {
-        boldText: "Efficiency Tips",
-        bodyText:
-          "Get recommendations on water-to-grain ratios for optimal heat distribution.",
-      },
-      {
-        boldText: "Save Your Settings",
-        bodyText:
-          "Quickly recall your most common mash profiles for future brews.",
+        bodyText: "Supports both metric and imperial measurements.",
       },
     ],
     closingSummary:
-      "Achieve perfect mash temperatures without the guesswork—let the Infusion Temperature Calculator make your brew day smoother and more consistent! 🍻",
+      "Brew confidently with healthy yeast every time using the Yeast Starter Calculator! 🍻",
   };
 
   return (
@@ -80,9 +89,9 @@ export default function InfusionStepToolPage(): JSX.Element {
       </Helmet>
       <Suspense>
         <ToolWrapperPageTemplate id={"infusion-step-tool"}>
-          <ImageBlurView image={InfusionStepImage} imageDescription="" />
+          <ImageBlurView image={YeastStarterCalculatorImage} imageDescription="" />
           <Box sx={{ margin: 2 }}>
-            <TitleView title="Infusion Step Tool" />
+            <TitleView title="Yeast Starter" />
             {/**
              * Should have the following elements:
              * • Type (Initi Strike vs Step Infusion)

@@ -14,7 +14,7 @@ import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
 import { Button } from "@mui/material";
 
-import logo from '../../assets/tool-icons/Beer_Hopper_Banner.png'
+import logo from '../../assets/HomePage/Beer_Hopper_Banner.png'
 
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
@@ -176,7 +176,7 @@ export default function PrimarySearchAppBar() {
   );
 
   return (
-    <Box sx={{ flexGrow: 1, position:"fixed", width: "100%", zIndex:999}}>
+    <Box sx={{ flexGrow: 1, zIndex:999, position: "sticky", top: 0}}>
       <AppBar
         position="static"
         style={{
