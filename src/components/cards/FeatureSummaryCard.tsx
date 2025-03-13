@@ -1,9 +1,4 @@
-import {
-  Box,
-  List,
-  ListItem,
-  Typography,
-} from "@mui/material";
+import { Box, Divider, List, ListItem, Typography } from "@mui/material";
 import { JSX } from "react";
 import Spacer from "../common/Spacer";
 
@@ -18,6 +13,7 @@ export interface FeatureSummaryCardProps {
   featureTitle: string;
   listItems: FeatureSummaryListItem[];
   closingSummary: string;
+  calculator?: React.ReactNode;
 }
 
 export default function FeatureSummaryCard({
@@ -26,6 +22,7 @@ export default function FeatureSummaryCard({
   featureTitle,
   listItems,
   closingSummary,
+  calculator,
 }: FeatureSummaryCardProps): JSX.Element {
   return (
     <Box
@@ -58,6 +55,11 @@ export default function FeatureSummaryCard({
       <Typography variant="body1" component="p" gutterBottom>
         {closingSummary}
       </Typography>
+      <Spacer />
+      <Divider />
+      <Spacer />
+      {calculator}
+      <Spacer />
     </Box>
   );
 }
