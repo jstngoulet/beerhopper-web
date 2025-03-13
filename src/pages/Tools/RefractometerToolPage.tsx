@@ -28,6 +28,7 @@ import Spacer from "../../components/common/Spacer";
 import React from "react";
 import ButtonActionView from "../../components/Views/ButtonActionView";
 import SubtitleView from "../../components/Views/SubtitleView";
+import AdSenseBanner from "../../components/common/GoogleAds";
 
 export default function RefractometerToolPage(): JSX.Element {
   const [calibrationOpen, setCalibrationOpen] = React.useState<boolean>(false);
@@ -347,6 +348,11 @@ export default function RefractometerToolPage(): JSX.Element {
               }
               flipped={false}
               note={note}
+            />
+            <AdSenseBanner
+              client="ca-pub-3940256099942544"
+              slot="1234567890"
+              className="tools-ad"
             />
           </Box>
         </ToolWrapperPageTemplate>
