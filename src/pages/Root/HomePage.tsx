@@ -36,15 +36,43 @@ export default function HomePage(): JSX.Element {
     window.location.href = "/explore";
   }
 
-  const features = [
-    "Brewery Profiles: Breweries can create profiles to showcase their unique beers, events, and stories.",
-    "Beer Reviews & Ratings: Users can rate and review beers, helping others discover new favorites.",
-    "Event Listings: Breweries can promote upcoming events such as tastings, festivals, and tours.",
-    "Community Interaction: Connect with other beer enthusiasts, share experiences, and discuss brews.",
-    "Virtual Tastings: Participate in or host virtual tasting events to engage with others and explore new flavors.",
-    "Networking Opportunities: Breweries and industry professionals can collaborate and build partnerships.",
-    "Brewery Spotlights: Featured sections highlighting breweries and their special offerings.",
-  ];
+const features = [
+  {
+    boldText: "Brewery Profiles",
+    bodyText:
+      "Breweries can create profiles to showcase their unique beers, events, and stories.",
+  },
+  {
+    boldText: "Beer Reviews & Ratings",
+    bodyText:
+      "Users can rate and review beers, helping others discover new favorites.",
+  },
+  {
+    boldText: "Event Listings",
+    bodyText:
+      "Breweries can promote upcoming events such as tastings, festivals, and tours.",
+  },
+  {
+    boldText: "Community Interaction",
+    bodyText:
+      "Connect with other beer enthusiasts, share experiences, and discuss brews.",
+  },
+  {
+    boldText: "Virtual Tastings",
+    bodyText:
+      "Participate in or host virtual tasting events to engage with others and explore new flavors.",
+  },
+  {
+    boldText: "Networking Opportunities",
+    bodyText:
+      "Breweries and industry professionals can collaborate and build partnerships.",
+  },
+  {
+    boldText: "Brewery Spotlights",
+    bodyText:
+      "Featured sections highlighting breweries and their special offerings.",
+  },
+];
   
   const featuredTools = tools
     .filter((i, index) => (index < 5))
@@ -85,7 +113,12 @@ export default function HomePage(): JSX.Element {
                 </Typography>
                 <List>
                   {features.map((item) => (
-                    <ListItem>{`• ${item}`}</ListItem>
+                    <ListItem>
+                      <Typography variant="body1" component="p" gutterBottom>
+                        <Box component="b">{`${item.boldText}: `}</Box>
+                        {item.bodyText}
+                      </Typography>
+                    </ListItem>
                   ))}
                 </List>
               </Box>

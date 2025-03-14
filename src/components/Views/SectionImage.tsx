@@ -20,7 +20,7 @@ export default function SectionImage({
         container
         size={2}
         spacing={5}
-        columns={{ sm: 1, md: 2, lg: 2 }}
+        columns={2}
         paddingTop={5}
         paddingBottom={5}
       >
@@ -33,7 +33,7 @@ export default function SectionImage({
             alt={altImage}
             style={{
               width: "100%",
-              height: "inherit",
+              height: "100%",
               overflow: "hidden",
               objectFit: "cover",
             }}
@@ -48,7 +48,7 @@ export default function SectionImage({
       container
       size={2}
       spacing={5}
-      columns={{ sm: 1, md: 2, lg: 2 }}
+      columns={2}
       paddingTop={5}
       paddingBottom={5}
     >
@@ -58,7 +58,7 @@ export default function SectionImage({
           alt={altImage}
           style={{
             width: "100%",
-            height: "inherit",
+            height: "100%",
             overflow: "hidden",
             objectFit: "cover",
           }}

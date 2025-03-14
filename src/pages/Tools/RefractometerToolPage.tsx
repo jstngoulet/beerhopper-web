@@ -30,12 +30,11 @@ import ButtonActionView from "../../components/Views/ButtonActionView";
 import SubtitleView from "../../components/Views/SubtitleView";
 
 export default function RefractometerToolPage(): JSX.Element {
-  const [calibrationOpen, setCalibrationOpen] = React.useState<boolean>(false);
+  const [calibrationOpen, setCalibrationOpen] = React.useState<boolean>(true);
   const [tipsOpen, setTipsOpen] = React.useState<boolean>(false);
 
-  const [refractometerValue, setRefactometerValue] =
-    React.useState<string>("0.0");
-  const [gravityValue, setGravityValue] = React.useState<string>("1.0000");
+  const [refractometerValue, setRefactometerValue] = React.useState<string>("");
+  const [gravityValue, setGravityValue] = React.useState<string>("");
 
   const handleCalibrationToggle = () => {
     setCalibrationOpen(!calibrationOpen);
@@ -64,6 +63,11 @@ export default function RefractometerToolPage(): JSX.Element {
       setGravityValue(newGravityValue.toString());
       return;
     }
+  };
+
+  const resetCalculator = () => {
+    setRefactometerValue("");
+    setGravityValue("");
   };
 
   // const toolInfo: FeatureSummaryCardProps = {
@@ -264,7 +268,12 @@ export default function RefractometerToolPage(): JSX.Element {
             <List>
               {tips.map((tip, index) => (
                 <ListItem>
-                  <Typography variant="body1" component="p" gutterBottom>
+                  <Typography
+                    variant="body1"
+                    component="p"
+                    gutterBottom
+                    color={theme.palette.primary.contrastText}
+                  >
                     <Box component="b">{`${tip.boldText}: `}</Box>
                     {tip.bodyText}
                   </Typography>
@@ -328,6 +337,11 @@ export default function RefractometerToolPage(): JSX.Element {
                           <Spacer />
                           <ButtonActionView
                             buttons={[
+                              {
+                                text: "Reset",
+                                isPrimary: false,
+                                action: resetCalculator,
+                              },
                               {
                                 text: "Convert",
                                 isPrimary: true,

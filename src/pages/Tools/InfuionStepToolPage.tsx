@@ -8,8 +8,8 @@ import { NoteCardProps } from "../../components/cards/NoteCard";
 import FeatureSummaryCard, {
   FeatureSummaryCardProps,
 } from "../../components/cards/FeatureSummaryCard";
-import ImageBlurView from "../../components/Views/ImageBlurView";
 
+import ImageBlurView from "../../components/Views/ImageBlurView";
 import InfusionStepImage from "../../assets/tool-icons/Infusion-Step-Calculator.webp";
 
 export default function InfusionStepToolPage(): JSX.Element {

@@ -10,6 +10,9 @@ import FeatureSummaryCard, {
   FeatureSummaryCardProps,
 } from "../../components/cards/FeatureSummaryCard";
 
+import ImageBlurView from "../../components/Views/ImageBlurView";
+import AlcoholAndAttenuationImage from '../../assets/tool-icons/Alcohol-And-Attenuation-Calculator.webp'
+
 export default function AlcoholAndAttenuationToolPage(): JSX.Element {
   const note: NoteCardProps = {
     content: (
@@ -87,11 +90,7 @@ export default function AlcoholAndAttenuationToolPage(): JSX.Element {
       </Helmet>
       <Suspense>
         <ToolWrapperPageTemplate id={"infusion-step-tool"}>
-          <ImageView
-            path="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.sciencealert.com%2Fimages%2F2019-05%2Fprocessed%2Fegyptian_beer_cover_unsplash_1024.jpg&f=1&nofb=1&ipt=9837ccdd5fffc07508d07d11550b2eb6748acaa42b9cb0e9d1f306561657d352&ipo=images"
-            alt="Beer Cover Image"
-            maxHeight={250}
-          />
+          <ImageBlurView image={AlcoholAndAttenuationImage} />
           <Box sx={{ margin: 2 }}>
             <TitleView title="Alcohol and Attenuation" />
             {/**

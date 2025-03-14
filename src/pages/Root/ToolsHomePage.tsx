@@ -10,6 +10,8 @@ import ImageView from "../../components/Views/ImageView";
 import SubtitleView from "../../components/Views/SubtitleView";
 import TitleView from "../../components/Views/TitleView";
 
+import BeerCoverImage from '../../assets/BannerImages/Beer-Tools-Cover-Image.webp'
+
 export default function ToolsHomePage(): JSX.Element {
 
   const gridItems: JSX.Element[] = tools.map((project) => (
@@ -38,7 +40,7 @@ export default function ToolsHomePage(): JSX.Element {
           <Navbar />
           <Grid size={1}>
             <ImageView
-              path="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcablevey.com%2Fwp-content%2Fuploads%2F2020%2F10%2FModern-Beer-Brewing-Equipment1-1.jpg&f=1&nofb=1&ipt=230e75f6233abb437941f4bc5f71f86c60122c7d632dbf1f8b4bf67069c94452&ipo=images"
+              path={BeerCoverImage}
               alt="Brewery Tools Image"
               maxHeight={300}
             />

@@ -1,12 +1,22 @@
-import ToolProp from '../types/ToolProp';
+import ToolProp from "../types/ToolProp";
 
 // Import the images
 import InfusionStepImage from "../../assets/tool-icons/Infusion-Step-Calculator.webp";
 import DecoctionVolumeImage from "../../assets/tool-icons/Decoction-Volume-Calculator.webp";
 import MashTempAdjusterImage from "../../assets/tool-icons/Mash-Temp-Adjuster.webp";
 import MashPhCalculatorImage from "../../assets/tool-icons/Mash-Ph-Calculator.webp";
-import YeastStarterCalculatorImage from '../../assets/tool-icons/Yeast-Starter-Calculator.webp'
-import RefractometerConverterImage from '../../assets/tool-icons/Refractometer-Converter.webp'
+import YeastStarterCalculatorImage from "../../assets/tool-icons/Yeast-Starter-Calculator.webp";
+import RefractometerConverterImage from "../../assets/tool-icons/Refractometer-Converter.webp";
+import AlcholAndAttenuationImage from "../../assets/tool-icons/Alcohol-And-Attenuation-Calculator.webp";
+import HopAgeCalculatorImage from "../../assets/tool-icons/Hop-Age-Calculator.webp";
+import MeadNutrientAdditionCalculatorImage from "../../assets/tool-icons/Mead-Nutrient-Addition-Calculator.webp";
+import BacksweeteningCalculatorImage from "../../assets/tool-icons/Backsweetening-Calculator.webp";
+import SulfiteAdditionCalculatorImage from "../../assets/tool-icons/Sulfite-Addition-Calculator.webp";
+import BoilOffCalculatorImage from "../../assets/tool-icons/Boil-Off-Calculator.webp";
+import DilutionToolImage from "../../assets/tool-icons/Dilution-Calculator.webp";
+import GravityBoostToolImage from "../../assets/tool-icons/Gravity-Boost-Calculator.webp";
+import WeightToVolumeToolImage from "../../assets/tool-icons/Weight-To-Volume-Calculator.webp";
+import CarbonationCalculatorImage from "../../assets/tool-icons/Carbonation-Calculator.webp";
 
 export const tools: ToolProp[] = [
   {
@@ -14,7 +24,7 @@ export const tools: ToolProp[] = [
     name: "Infusion Step Tool",
     description:
       "The Infusion Step Tool is an essential tool for brewers looking to achieve precise mash temperatures when adding hot water to their grain bed. Whether you’re performing a step mash or correcting a mash that’s too cool, this calculator ensures you hit your target temperature every time.",
-    active: true,
+    active: false,
     path: "/tools/infusion-step",
   },
   {
@@ -54,11 +64,11 @@ export const tools: ToolProp[] = [
     name: "Refactometer",
     description:
       "The Refractometer to Gravity Calculator is an essential tool for brewers who use a refractometer to measure wort gravity, especially after fermentation has started. Since alcohol distorts refractometer readings, this calculator corrects the measurement to provide an accurate specific gravity or Brix value.",
-    active: false,
+    active: true,
     path: "/tools/refractometer",
   },
   {
-    imageIcon: "",
+    imageIcon: AlcholAndAttenuationImage,
     name: "Alcohol and Attenuation",
     description:
       "The Alcohol and Attenuation Calculator is an indispensable tool for brewers to accurately determine the alcohol by volume (ABV) and apparent attenuation of their beer. Understanding these metrics helps gauge fermentation efficiency and predict the final flavor profile.",
@@ -66,7 +76,7 @@ export const tools: ToolProp[] = [
     path: "/tools/alcohol-and-attenuation",
   },
   {
-    imageIcon: "",
+    imageIcon: HopAgeCalculatorImage,
     name: "Hop Age Tool",
     description:
       "The Hop Age Calculator is a vital tool for brewers looking to assess the freshness and potency of their hops. Over time, hops lose alpha acids and aromatic compounds, which can significantly impact bitterness and flavor. This calculator helps you accurately estimate the remaining alpha acid percentage based on storage conditions and age.",
@@ -74,7 +84,7 @@ export const tools: ToolProp[] = [
     path: "/tools/hop-age",
   },
   {
-    imageIcon: "",
+    imageIcon: MeadNutrientAdditionCalculatorImage,
     name: "Mead Nutrients",
     description:
       "The Mead Nutrient Addition Calculator is an essential tool for mead makers, helping you determine the optimal nutrient additions for your honey-based fermentation. Proper nutrient management ensures healthy yeast activity, minimizes fermentation stress, and leads to a clean, well-balanced mead.",
@@ -82,7 +92,7 @@ export const tools: ToolProp[] = [
     path: "/tools/mead-nutrients",
   },
   {
-    imageIcon: "",
+    imageIcon: BacksweeteningCalculatorImage,
     name: "Backsweeten",
     description:
       "The Backsweetening Calculator is an essential tool for brewers and mead makers looking to adjust the sweetness of their beverages after fermentation. Whether you’re creating a sweeter mead, cider, beer, or wine, this tool helps you calculate the exact amount of sugar or sweetener needed to reach your desired sweetness level without over-sweetening.",
@@ -90,7 +100,7 @@ export const tools: ToolProp[] = [
     path: "/tools/backsweeten",
   },
   {
-    imageIcon: "",
+    imageIcon: SulfiteAdditionCalculatorImage,
     name: "Sulfite Tool",
     description:
       "The Sulfite Addition Calculator is a crucial tool for winemakers, meadmakers, and brewers who want to properly stabilize their beverages. This tool helps you determine the precise amount of potassium metabisulfite (or sodium metabisulfite) needed to prevent oxidation, spoilage, and unwanted microbial growth while maintaining the flavor integrity of your product.",
@@ -98,7 +108,7 @@ export const tools: ToolProp[] = [
     path: "/tools/sulfite",
   },
   {
-    imageIcon: "",
+    imageIcon: BoilOffCalculatorImage,
     name: "Boil off Tool",
     description:
       "The Boil-Off Calculator is a crucial tool for brewers to determine the volume of wort that will evaporate during the boil. Knowing how much wort will boil off allows you to adjust your starting volume, ensuring you end up with the correct final volume for your recipe and fermentation vessel.",
@@ -106,7 +116,7 @@ export const tools: ToolProp[] = [
     path: "/tools/boil-off",
   },
   {
-    imageIcon: "",
+    imageIcon: DilutionToolImage,
     name: "Dilution Tool",
     description:
       "The Dilution Calculator is an essential tool for brewers, meadmakers, and winemakers who need to adjust the strength or concentration of their beverages. Whether you're adjusting your wort to reach the desired original gravity or diluting a high-alcohol beverage to a more balanced level, this tool helps you calculate exactly how much water (or other liquid) to add.",
@@ -114,7 +124,7 @@ export const tools: ToolProp[] = [
     path: "/tools/dilution",
   },
   {
-    imageIcon: "",
+    imageIcon: GravityBoostToolImage,
     name: "Adjust Gravity Tool",
     description:
       "The Gravity Boost Calculator is a handy tool designed to help brewers determine the amount of Dry Malt Extract (DME) or Liquid Malt Extract (LME) needed to raise the gravity of their wort to a desired level. Whether you’re looking to rescue a low-gravity batch or intentionally increase the strength of your brew, this tool makes the calculation quick and accurate.",
@@ -122,7 +132,7 @@ export const tools: ToolProp[] = [
     path: "/tools/adjust-gravity",
   },
   {
-    imageIcon: "",
+    imageIcon: WeightToVolumeToolImage,
     name: "Weight to Volume",
     description:
       "The Weight to Volume Calculator is a must-have tool for brewers, meadmakers, and winemakers who need to convert ingredients from weight measurements (such as grams, ounces, or pounds) to volume measurements (like milliliters, liters, or gallons). This tool ensures accuracy when adding ingredients like honey, sugars, grains, or hops, which can vary in density.",
@@ -130,7 +140,7 @@ export const tools: ToolProp[] = [
     path: "/tools/weight-to-volume",
   },
   {
-    imageIcon: "",
+    imageIcon: CarbonationCalculatorImage,
     name: "Carbonation",
     description:
       "The Carbonation Calculator is a vital tool for brewers, meadmakers, and cider makers who want to achieve the perfect level of carbonation for their beverages. Whether you're bottling beer, mead, or cider, this tool helps you calculate the precise amount of priming sugar or CO2 pressure needed to reach your desired carbonation level.",
@@ -142,6 +152,6 @@ export const tools: ToolProp[] = [
   //     name: "",
   //     description: "",
   //   },
-];
-// .filter((item) => item.active)
-// .sort((a, b) => (a.name > b.name ? 1 : -1));
+]
+.filter((item) => item.active)
+.sort((a, b) => (a.name > b.name ? 1 : -1));
