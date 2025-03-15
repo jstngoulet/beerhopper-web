@@ -2,23 +2,13 @@ import { JSX, Suspense } from "react";
 import { Helmet } from "react-helmet";
 import ToolWrapperPageTemplate from "./ToolWrapperPage";
 import TitleView from "../../components/Views/TitleView";
-import {
-  Box,
-  Collapse,
-  Grid2 as Grid,
-  IconButton,
-  List,
-  ListItem,
-  Typography,
-} from "@mui/material";
+import { Box, Grid2 as Grid, List, ListItem, Typography } from "@mui/material";
 import SplitContentNoteView from "../../components/Views/SplitContentNoteView";
 import { NoteCardProps } from "../../components/cards/NoteCard";
 import FeatureSummaryCard, {
   FeatureSummaryCardProps,
   FeatureSummaryListItem,
 } from "../../components/cards/FeatureSummaryCard";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
 import RefractometerConverterImage from "../../assets/tool-icons/Refractometer-Converter.webp";
 import ImageBlurView from "../../components/Views/ImageBlurView";
@@ -28,46 +18,92 @@ import Spacer from "../../components/common/Spacer";
 import React from "react";
 import ButtonActionView from "../../components/Views/ButtonActionView";
 import SubtitleView from "../../components/Views/SubtitleView";
+import CollapsableView from "../../components/common/CollapsableView";
+import { isDecimal } from "../../models/utilities/NumberVerification";
 
 export default function RefractometerToolPage(): JSX.Element {
-  const [calibrationOpen, setCalibrationOpen] = React.useState<boolean>(true);
-  const [tipsOpen, setTipsOpen] = React.useState<boolean>(false);
-
-  const [refractometerValue, setRefactometerValue] = React.useState<string>("");
-  const [gravityValue, setGravityValue] = React.useState<string>("");
-
-  const handleCalibrationToggle = () => {
-    setCalibrationOpen(!calibrationOpen);
+  const defaultProperties = {
+    gravity: "",
+    refractometer: "",
+    distilledReading: "0.0",
+    wortRefractometerReading: "10.00",
+    wortHydrometerReading: "1.039",
   };
 
-  const handleTipsToggle = () => {
-    setTipsOpen(!tipsOpen);
-  };
+  const [refractometerValue, setRefactometerValue] = React.useState<string>(
+    defaultProperties.refractometer
+  );
 
-  const isDecimal = (value: string): boolean => {
-    return /^-?\d*\.?\d*$/.test(value);
-  };
+  const [gravityValue, setGravityValue] = React.useState<string>(
+    defaultProperties.gravity
+  );
+
+  const [distilledReadingValue, setDistilledReading] = React.useState<string>(
+    defaultProperties.distilledReading
+  );
+
+  const [wortRefractomerReading, setWortRefractomerReading] =
+    React.useState<string>(defaultProperties.wortRefractometerReading);
+
+  const [wortHydrometerReading, setWorHydrometerReading] =
+    React.useState<string>(defaultProperties.wortHydrometerReading);
 
   const handleRefractomterValueChange = (newValue: string) => {
     // Allow only numbers and restrict to the range 0-100
     if (isDecimal(newValue) && Number(newValue) <= 100) {
       setRefactometerValue(newValue); // Pass the updated value to the parent
-      setGravityValue("");
+      setGravityValue(defaultProperties.gravity);
     }
   };
 
   const handleRefractometerExit = () => {
-    if (isDecimal(refractometerValue) && Number(refractometerValue) <= 100) {
-      const numberValue = Number(refractometerValue);
-      const newGravityValue = brixToGravity(numberValue);
+    if (
+      isDecimal(refractometerValue) &&
+      isDecimal(distilledReadingValue) &&
+      isDecimal(wortHydrometerReading) &&
+      isDecimal(wortRefractomerReading) &&
+      Number(refractometerValue) <= 100
+    ) {
+      const refractNumber = Number(refractometerValue);
+      const distilledNumber = Number(distilledReadingValue);
+      const wHydroNumber = Number(wortHydrometerReading);
+      const wRefractNumber = Number(wortRefractomerReading);
+
+      const newGravityValue = brixToGravity(
+        refractNumber,
+        distilledNumber,
+        wRefractNumber,
+        wHydroNumber
+      );
       setGravityValue(newGravityValue.toString());
       return;
     }
   };
 
+  const handleDistilledReadingChange = (newValue: string) => {
+    if (!isDecimal(newValue)) return;
+
+    setDistilledReading(newValue);
+  };
+
+  const handleWortRefractometerChange = (newValue: string) => {
+    if (!isDecimal(newValue)) return;
+
+    setWortRefractomerReading(newValue);
+  };
+
+  const handleWortHydrometerChange = (newValue: string) => {
+    if (!isDecimal(newValue)) return;
+
+    setWorHydrometerReading(newValue);
+  };
+
   const resetCalculator = () => {
-    setRefactometerValue("");
-    setGravityValue("");
+    setRefactometerValue(defaultProperties.refractometer);
+    setGravityValue(defaultProperties.gravity);
+    setDistilledReading(defaultProperties.distilledReading);
+    setWorHydrometerReading(defaultProperties.wortHydrometerReading);
+    setWortRefractomerReading(defaultProperties.wortRefractometerReading);
   };
 
   // const toolInfo: FeatureSummaryCardProps = {
@@ -169,118 +205,79 @@ export default function RefractometerToolPage(): JSX.Element {
     content: (
       <Box>
         <Box>
-          {/* Calibration SEttings */}
-
-          <Grid
-            container
-            columns={2}
-            direction={"row"}
-            alignItems="center"
-            justifyContent="space-between"
-          >
-            <Typography variant="subtitle2" component="h6" gutterBottom>
-              Calibration Settings
-            </Typography>
-            <IconButton
-              onClick={handleCalibrationToggle}
-              sx={{
-                color: theme.palette.primary.contrastText,
-              }}
-            >
-              {calibrationOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-            </IconButton>
-          </Grid>
-          <Collapse in={calibrationOpen} timeout="auto" unmountOnExit>
-            <Box
-              sx={{
-                backgroundColor: theme.palette.background.paper,
-                padding: "1em 1em 2em 1em",
-                borderRadius: 1,
-              }}
-            >
-              <Grid container columns={1} direction={"column"} spacing={2}>
-                <Typography
-                  variant="body1"
-                  component="b"
-                  gutterBottom
-                  sx={{
-                    color: theme.palette.text.primary,
-                  }}
-                >
-                  Distilled Water Calibration
-                </Typography>
-                <TextFieldWithCaption
-                  label={"Distilled Reading"}
-                  value={"0.0"}
-                  onChange={function (value: string): void {
-                    // throw new Error("Function not implemented.");
-                  }}
-                />
-                <Typography
-                  variant="body1"
-                  component="b"
-                  gutterBottom
-                  sx={{
-                    color: theme.palette.text.primary,
-                  }}
-                >
-                  Wort Measurement
-                </Typography>
-                <TextFieldWithCaption
-                  label={"Refractomer Reading"}
-                  value={"12.5"}
-                  onChange={function (value: string): void {
-                    // throw new Error("Function not implemented.");
-                  }}
-                />
-                <TextFieldWithCaption
-                  label={"Hydrometer Reading"}
-                  value={"1.048"}
-                  errorMessage="Hello"
-                  onChange={function (value: string): void {
-                    // throw new Error("Function not implemented.");
-                  }}
-                />
-              </Grid>
-            </Box>
-          </Collapse>
-          <Spacer />
-          <Grid
-            container
-            columns={2}
-            direction={"row"}
-            alignItems="center"
-            justifyContent="space-between"
-          >
-            <Typography variant="subtitle2" component="h6" gutterBottom>
-              Helpful Tips
-            </Typography>
-            <IconButton
-              onClick={handleTipsToggle}
-              sx={{
-                color: theme.palette.primary.contrastText,
-              }}
-            >
-              {tipsOpen ? <ExpandLessIcon /> : <ExpandMoreIcon />}
-            </IconButton>
-          </Grid>
-          <Collapse in={tipsOpen} timeout="auto" unmountOnExit>
-            <List>
-              {tips.map((tip, index) => (
-                <ListItem>
+          <CollapsableView
+            title={"Calibration Settings"}
+            content={
+              <Box
+                sx={{
+                  backgroundColor: theme.palette.background.paper,
+                  padding: "1em 1em 2em 1em",
+                  borderRadius: 1,
+                }}
+              >
+                <Grid container columns={1} direction={"column"} spacing={2}>
                   <Typography
                     variant="body1"
-                    component="p"
+                    component="b"
                     gutterBottom
-                    color={theme.palette.primary.contrastText}
+                    sx={{
+                      color: theme.palette.text.primary,
+                    }}
                   >
-                    <Box component="b">{`${tip.boldText}: `}</Box>
-                    {tip.bodyText}
+                    Distilled Water Calibration
                   </Typography>
-                </ListItem>
-              ))}
-            </List>
-          </Collapse>
+                  <TextFieldWithCaption
+                    label={"Distilled Reading"}
+                    value={distilledReadingValue}
+                    onChange={handleDistilledReadingChange}
+                  />
+                  <Typography
+                    variant="body1"
+                    component="b"
+                    gutterBottom
+                    sx={{
+                      color: theme.palette.text.primary,
+                    }}
+                  >
+                    Wort Measurement
+                  </Typography>
+                  <TextFieldWithCaption
+                    label={"Refractomer Reading"}
+                    value={wortRefractomerReading}
+                    onChange={handleWortRefractometerChange}
+                  />
+                  <TextFieldWithCaption
+                    label={"Hydrometer Reading"}
+                    value={wortHydrometerReading}
+                    onChange={handleWortHydrometerChange}
+                  />
+                </Grid>
+              </Box>
+            }
+            open={true}
+          />
+          <Spacer />
+          <CollapsableView
+            title={"Helpful Tips"}
+            content={
+              <List>
+                {tips.map((tip, index) => (
+                  <ListItem>
+                    <Typography
+                      variant="body1"
+                      component="p"
+                      gutterBottom
+                      color={theme.palette.primary.contrastText}
+                    >
+                      <Box component="b">{`${tip.boldText}: `}</Box>
+                      {tip.bodyText}
+                    </Typography>
+                  </ListItem>
+                ))}
+              </List>
+            }
+            open={false}
+          />
         </Box>
       </Box>
     ),
@@ -380,9 +377,9 @@ export default function RefractometerToolPage(): JSX.Element {
  */
 function brixToGravity(
   brix: number,
-  distilledWaterCalibration: number = 0.0,
-  refractometerReading: number = 12.5,
-  hydrometerReading: number = 1.048
+  distilledWaterCalibration: number,
+  refractometerReading: number,
+  hydrometerReading: number
 ): number {
   // Calculate wort calibration factor using both readings
   const wortCalibration =

@@ -12,6 +12,8 @@ import BuildIcon from "@mui/icons-material/Build";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import LoginIcon from "@mui/icons-material/Login";
 import AppRegistrationIcon from "@mui/icons-material/AppRegistration";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+
 import { Button } from "@mui/material";
 
 import logo from '../../assets/HomePage/Beer_Hopper_Banner.png'
@@ -87,6 +89,11 @@ export default function PrimarySearchAppBar() {
     handleMobileMenuClose();
     window.location.href = "/";
   };
+  
+  const handleNavigateExplore = (event: React.MouseEvent<HTMLElement>) => {
+    handleMobileMenuClose();
+    window.location.href = "/explore";
+  };
 
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
@@ -141,42 +148,54 @@ export default function PrimarySearchAppBar() {
       onClose={handleMobileMenuClose}
     >
       <MenuItem onClick={handleOpenLogin}>
-        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
+        <IconButton size="small" aria-label="show 4 new mails" color="inherit">
           <Badge color="error">
-            <LoginIcon />
+            <LoginIcon sx={{ fontSize: 25 }} />
           </Badge>
         </IconButton>
         <p>Login</p>
       </MenuItem>
       <MenuItem onClick={handleOpenRegistration}>
         <IconButton
-          size="large"
+          size="small"
           aria-label="show 17 new notifications"
           color="inherit"
         >
           <Badge color="error">
-            <AppRegistrationIcon />
+            <AppRegistrationIcon sx={{ fontSize: 25 }} />
           </Badge>
         </IconButton>
         <p>Registration</p>
       </MenuItem>
       <MenuItem onClick={handleOpenTools}>
         <IconButton
-          size="large"
+          size="small"
           aria-label="account of current user"
           aria-controls="primary-search-account-menu"
           aria-haspopup="true"
           color="inherit"
         >
-          <BuildIcon />
+          <BuildIcon sx={{ fontSize: 25 }} />
         </IconButton>
         <p>Tools</p>
+      </MenuItem>
+      <MenuItem onClick={handleNavigateExplore}>
+        <IconButton
+          size="small"
+          // aria-label="account of current user"
+          // aria-controls="primary-search-account-menu"
+          aria-haspopup="true"
+          color="inherit"
+        >
+          <DashboardIcon sx={{ fontSize: 25 }} />
+        </IconButton>
+        <p>Explore</p>
       </MenuItem>
     </Menu>
   );
 
   return (
-    <Box sx={{ flexGrow: 1, zIndex:999, position: "sticky", top: 0}}>
+    <Box sx={{ flexGrow: 1, zIndex: 999, position: "sticky", top: 0 }}>
       <AppBar
         position="static"
         style={{
@@ -213,7 +232,7 @@ export default function PrimarySearchAppBar() {
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
               size="large"
-              aria-label="show 4 new mails"
+              // aria-label="show 4 new mails"
               color="inherit"
               onClick={handleOpenLogin}
             >
@@ -231,7 +250,7 @@ export default function PrimarySearchAppBar() {
             </IconButton>
             <IconButton
               size="large"
-              aria-label="show 17 new notifications"
+              aria-label=""
               color="inherit"
               onClick={handleOpenRegistration}
             >
@@ -241,7 +260,7 @@ export default function PrimarySearchAppBar() {
             </IconButton>
             <IconButton
               size="large"
-              aria-label="show 17 new notifications"
+              aria-label=""
               color="inherit"
               onClick={handleOpenTools}
             >
@@ -249,11 +268,21 @@ export default function PrimarySearchAppBar() {
                 <BuildIcon />
               </Badge>
             </IconButton>
+            <IconButton
+              size="large"
+              aria-label=""
+              color="inherit"
+              onClick={handleNavigateExplore}
+            >
+              <Badge color="error">
+                <DashboardIcon />
+              </Badge>
+            </IconButton>
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
-              aria-label="show more"
+              // aria-label="show more"
               aria-controls={mobileMenuId}
               aria-haspopup="true"
               onClick={handleMobileMenuOpen}

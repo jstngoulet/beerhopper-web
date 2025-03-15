@@ -5,15 +5,14 @@ import Navbar from "../../components/navigation/NavBar";
 import Footer from "../../components/navigation/Footer";
 import { Grid2 as Grid } from "@mui/material";
 import SimpleCard from "../../components/cards/SimpleCard";
-import { tools } from '../../models/api/AvailableTools';
+import { tools } from "../../models/api/AvailableTools";
 import ImageView from "../../components/Views/ImageView";
 import SubtitleView from "../../components/Views/SubtitleView";
 import TitleView from "../../components/Views/TitleView";
 
-import BeerCoverImage from '../../assets/BannerImages/Beer-Tools-Cover-Image.webp'
+import BeerCoverImage from "../../assets/BannerImages/Beer-Tools-Cover-Image.webp";
 
 export default function ToolsHomePage(): JSX.Element {
-
   const gridItems: JSX.Element[] = tools.map((project) => (
     <Grid size={1} columns={2}>
       <SimpleCard
@@ -24,7 +23,6 @@ export default function ToolsHomePage(): JSX.Element {
       />
     </Grid>
   ));
-    
 
   return (
     <>

@@ -20,7 +20,7 @@ export default function SectionImage({
         container
         size={2}
         spacing={5}
-        columns={2}
+        columns={{xs: 1,md: 2}}
         paddingTop={5}
         paddingBottom={5}
       >
@@ -48,7 +48,7 @@ export default function SectionImage({
       container
       size={2}
       spacing={5}
-      columns={2}
+      columns={{ xs: 1, md: 2 }}
       paddingTop={5}
       paddingBottom={5}
     >
