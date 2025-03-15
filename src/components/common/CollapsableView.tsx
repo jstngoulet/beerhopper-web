@@ -1,6 +1,7 @@
 import { Grid2 as Grid, Typography, IconButton, Collapse } from "@mui/material";
 import React, { JSX } from "react";
 import theme from "../Theme";
+
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 
