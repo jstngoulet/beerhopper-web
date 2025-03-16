@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { TextField, Button, Typography, Paper } from "@mui/material";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 interface LoginFormProps {}
 
 const LoginForm: React.FC<LoginFormProps> = () => {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -37,7 +37,7 @@ const LoginForm: React.FC<LoginFormProps> = () => {
       const data = await response.json();
       console.log(`token: ${JSON.stringify(data)}`)
       localStorage.setItem("token", data.token);
-      navigate("/explore");
+      window.location.href = "/explore";
     } catch (error) {
       console.error("Login failed:", error);
       setErrorMessage(
