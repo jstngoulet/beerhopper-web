@@ -5,6 +5,7 @@ export interface ButtonProps {
   text: string;
   isPrimary: boolean;
   action: () => void;
+  isDisabled?: boolean;
 }
 
 export interface ButtonActionViewProps {
@@ -24,6 +25,7 @@ export default function ButtonActionView({
           style={{
             minWidth: "250px",
           }}
+          disabled={btn.isDisabled === true}
         >
           {btn.text}
         </Button>

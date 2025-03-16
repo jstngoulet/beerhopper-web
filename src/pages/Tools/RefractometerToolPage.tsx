@@ -1,4 +1,4 @@
-import { JSX, Suspense } from "react";
+import { JSX, Suspense, useState } from "react";
 import { Helmet } from "react-helmet";
 import ToolWrapperPageTemplate from "./ToolWrapperPage";
 import TitleView from "../../components/Views/TitleView";
@@ -55,8 +55,9 @@ export default function RefractometerToolPage(): JSX.Element {
       setGravityValue(defaultProperties.gravity);
     }
   };
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleRefractometerExit = () => {
+  const handleRefractometerExit = async () => {
     if (
       isDecimal(refractometerValue) &&
       isDecimal(distilledReadingValue) &&
@@ -64,19 +65,44 @@ export default function RefractometerToolPage(): JSX.Element {
       isDecimal(wortRefractomerReading) &&
       Number(refractometerValue) <= 100
     ) {
-      const refractNumber = Number(refractometerValue);
-      const distilledNumber = Number(distilledReadingValue);
-      const wHydroNumber = Number(wortHydrometerReading);
-      const wRefractNumber = Number(wortRefractomerReading);
+      try {
+        const token = localStorage.getItem("token");
+        if (!token) throw new Error("User is not authenticated");
 
-      const newGravityValue = brixToGravity(
-        refractNumber,
-        distilledNumber,
-        wRefractNumber,
-        wHydroNumber
-      );
-      setGravityValue(newGravityValue.toString());
-      return;
+        const queryParams = new URLSearchParams({
+          brix: refractometerValue,
+          distilledWaterCalibration: distilledReadingValue,
+          refractometerReading: wortRefractomerReading,
+          hydrometerReading: wortHydrometerReading,
+        }).toString();
+
+        const response = await fetch(
+          `${process.env.REACT_APP_API_SERVER_HOST}/tools/refractometer?${queryParams}`,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        if (!response.ok) {
+          const errorData = await response.json();
+          throw new Error(
+            errorData.error || `Server error: ${response.status}`
+          );
+        }
+
+        const data = await response.json();
+        setGravityValue(data.gravity);
+        setErrorMessage("");
+      } catch (error) {
+        const errorMessage =
+          error instanceof Error ? error.message : "An unknown error occurred.";
+        console.error("Refractometer calculation failed:", errorMessage);
+        setErrorMessage(errorMessage);
+      }
     }
   };
 
@@ -104,6 +130,7 @@ export default function RefractometerToolPage(): JSX.Element {
     setDistilledReading(defaultProperties.distilledReading);
     setWorHydrometerReading(defaultProperties.wortHydrometerReading);
     setWortRefractomerReading(defaultProperties.wortRefractometerReading);
+    setErrorMessage("");
   };
 
   // const toolInfo: FeatureSummaryCardProps = {
@@ -331,6 +358,11 @@ export default function RefractometerToolPage(): JSX.Element {
                             onChange={handleRefractomterValueChange}
                             onReturn={handleRefractometerExit}
                           />
+                          {errorMessage && (
+                            <Typography color="error" paddingTop={1}>
+                              {errorMessage}
+                            </Typography>
+                          )}
                           <Spacer />
                           <ButtonActionView
                             buttons={[
@@ -343,6 +375,7 @@ export default function RefractometerToolPage(): JSX.Element {
                                 text: "Convert",
                                 isPrimary: true,
                                 action: handleRefractometerExit,
+                                isDisabled: refractometerValue === ""
                               },
                             ]}
                           />
@@ -365,39 +398,3 @@ export default function RefractometerToolPage(): JSX.Element {
     </>
   );
 }
-
-/**
- * Converts refractometer reading (Brix) to specific gravity (SG) for unfermented wort.
- * Includes calibration settings for distilled water and wort measurement using refractometer and hydrometer readings.
- * @param brix - The Brix value obtained from the refractometer.
- * @param distilledWaterCalibration - The Brix reading of distilled water (usually 0.0).
- * @param refractometerReading - The Brix value obtained from the refractometer for calibration.
- * @param hydrometerReading - The specific gravity obtained from the hydrometer for calibration.
- * @returns The calculated specific gravity (SG).
- */
-function brixToGravity(
-  brix: number,
-  distilledWaterCalibration: number,
-  refractometerReading: number,
-  hydrometerReading: number
-): number {
-  // Calculate wort calibration factor using both readings
-  const wortCalibration =
-    hydrometerReading /
-    (1 +
-      refractometerReading / (258.6 - (refractometerReading / 258.2) * 227.1));
-  // Adjust Brix for distilled water calibration
-  const adjustedBrix = (brix - distilledWaterCalibration) / wortCalibration;
-  // Calculate specific gravity
-  const gravity = 1 + adjustedBrix / (258.6 - (adjustedBrix / 258.2) * 227.1);
-  return parseFloat(gravity.toFixed(4)); // Return gravity rounded to 4 decimal places
-}
-
-// // Example usage:
-// const brixReading = 12.5;
-// const distilledWaterCalibration = 0.0;
-// const refractometerReading = 12.5;
-// const hydrometerReading = 1.048;
-// console.log(`Specific Gravity: ${brixToGravity(brixReading, distilledWaterCalibration, refractometerReading, hydrometerReading)}`);
-
-// export default brixToGravity;
