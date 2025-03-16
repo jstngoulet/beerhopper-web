@@ -41,10 +41,12 @@ export default function Router(): React.JSX.Element {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/tools" element={<ToolsHomePage />} />
-        <Route
+        <Route path="/explore" element={<ExplorePage />} />
+        {/* Example Protected Route
+         <Route
           path="/explore"
           element={<ProtectedRoute element={<ExplorePage />} />}
-        />
+        /> */}
 
         {/* Tool Routes */}
         <Route path="/tools/infusion-step" element={<InfusionStepToolPage />} />
@@ -81,6 +83,21 @@ export default function Router(): React.JSX.Element {
           element={<WeightToVolumeToolPage />}
         />
         <Route path="/tools/carbonation" element={<CarbonationToolPage />} />
+
+        {/* Brew Sessions */}
+        <Route
+          path="/brew-sessions"
+          element={<ProtectedRoute element={<NotFoundPage />} />}
+        />
+
+        {/*Detail Pages */}
+        <Route path="/ingredients/hops" element={<NotFoundPage />} />
+        <Route path="/ingredients/grains" element={<NotFoundPage />} />
+        <Route path="/ingredients/yeasts" element={<NotFoundPage />} />
+        <Route path="/ingredients" element={<NotFoundPage />} />
+        <Route path="/beers" element={<NotFoundPage />} />
+        <Route path="/recipes" element={<NotFoundPage />} />
+        <Route path="/breweries" element={<NotFoundPage />} />
 
         {/* Not Found Page */}
         <Route path="/*" element={<NotFoundPage />} />
