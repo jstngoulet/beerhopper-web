@@ -1,7 +1,6 @@
 import { JSX, Suspense } from "react";
 import { Helmet } from "react-helmet";
 import ToolWrapperPageTemplate from "./ToolWrapperPage";
-import ImageView from "../../components/Views/ImageView";
 import TitleView from "../../components/Views/TitleView";
 import { Box, List, ListItem, Typography } from "@mui/material";
 import SplitContentNoteView from "../../components/Views/SplitContentNoteView";

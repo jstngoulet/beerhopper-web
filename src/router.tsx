@@ -1,5 +1,5 @@
-import { Routes, Route, BrowserRouter } from "react-router-dom";
-import React from "react";
+import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
+import React, { JSX } from "react";
 
 import HomePage from "./pages/Root/HomePage";
 import LoginPage from "./pages/Root/LoginPage";
@@ -23,6 +23,15 @@ import BoilOffToolPage from "./pages/Tools/BoilOffToolPage";
 import DilutionToolPage from "./pages/Tools/DilutionToolPage";
 import WeightToVolumeToolPage from "./pages/Tools/WeightToVolumeToolPage";
 import CarbonationToolPage from "./pages/Tools/CarbonationToolPage";
+import { isLoggedIn } from "./models/api/Auth-Helpers";
+
+interface ProtectedRouteProps {
+  element: JSX.Element;
+}
+
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element }) => {
+  return isLoggedIn ? element : <Navigate to="/login" replace />;
+};
 
 export default function Router(): React.JSX.Element {
   return (
@@ -32,7 +41,10 @@ export default function Router(): React.JSX.Element {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<Registration />} />
         <Route path="/tools" element={<ToolsHomePage />} />
-        <Route path="/explore" element={<ExplorePage />} />
+        <Route
+          path="/explore"
+          element={<ProtectedRoute element={<ExplorePage />} />}
+        />
 
         {/* Tool Routes */}
         <Route path="/tools/infusion-step" element={<InfusionStepToolPage />} />

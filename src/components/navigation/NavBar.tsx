@@ -21,6 +21,7 @@ import logo from '../../assets/HomePage/Beer_Hopper_Banner.png'
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import { styled, alpha } from "@mui/material/styles";
+import { isLoggedIn } from "../../models/api/Auth-Helpers";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -147,26 +148,26 @@ export default function PrimarySearchAppBar() {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={handleOpenLogin}>
-        <IconButton size="small" aria-label="show 4 new mails" color="inherit">
-          <Badge color="error">
-            <LoginIcon sx={{ fontSize: 25 }} />
-          </Badge>
-        </IconButton>
-        <p>Login</p>
-      </MenuItem>
-      <MenuItem onClick={handleOpenRegistration}>
-        <IconButton
-          size="small"
-          aria-label="show 17 new notifications"
-          color="inherit"
-        >
-          <Badge color="error">
-            <AppRegistrationIcon sx={{ fontSize: 25 }} />
-          </Badge>
-        </IconButton>
-        <p>Registration</p>
-      </MenuItem>
+      {!isLoggedIn && (
+        <MenuItem onClick={handleOpenLogin}>
+          <IconButton size="small" color="inherit">
+            <Badge color="error">
+              <LoginIcon sx={{ fontSize: 25 }} />
+            </Badge>
+          </IconButton>
+          <p>Login</p>
+        </MenuItem>
+      )}
+      {!isLoggedIn && (
+        <MenuItem onClick={handleOpenRegistration}>
+          <IconButton size="small" color="inherit">
+            <Badge color="error">
+              <AppRegistrationIcon sx={{ fontSize: 25 }} />
+            </Badge>
+          </IconButton>
+          <p>Registration</p>
+        </MenuItem>
+      )}
       <MenuItem onClick={handleOpenTools}>
         <IconButton
           size="small"
@@ -179,18 +180,20 @@ export default function PrimarySearchAppBar() {
         </IconButton>
         <p>Tools</p>
       </MenuItem>
-      <MenuItem onClick={handleNavigateExplore}>
-        <IconButton
-          size="small"
-          // aria-label="account of current user"
-          // aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <DashboardIcon sx={{ fontSize: 25 }} />
-        </IconButton>
-        <p>Explore</p>
-      </MenuItem>
+      {isLoggedIn && (
+        <MenuItem onClick={handleNavigateExplore}>
+          <IconButton
+            size="small"
+            // aria-label="account of current user"
+            // aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <DashboardIcon sx={{ fontSize: 25 }} />
+          </IconButton>
+          <p>Explore</p>
+        </MenuItem>
+      )}
     </Menu>
   );
 
@@ -230,34 +233,38 @@ export default function PrimarySearchAppBar() {
             />
           </Search>
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            <IconButton
-              size="large"
-              // aria-label="show 4 new mails"
-              color="inherit"
-              onClick={handleOpenLogin}
-            >
-              <Badge color="error">
-                <LoginIcon />
-              </Badge>
-              <Typography
-                variant="caption"
-                noWrap
-                component="div"
-                sx={{ display: { xs: "block", sm: "none" } }}
+            {!isLoggedIn && (
+              <IconButton
+                size="large"
+                // aria-label="show 4 new mails"
+                color="inherit"
+                onClick={handleOpenLogin}
               >
-                Login
-              </Typography>
-            </IconButton>
-            <IconButton
-              size="large"
-              aria-label=""
-              color="inherit"
-              onClick={handleOpenRegistration}
-            >
-              <Badge color="error">
-                <AppRegistrationIcon />
-              </Badge>
-            </IconButton>
+                <Badge color="error">
+                  <LoginIcon />
+                </Badge>
+                <Typography
+                  variant="caption"
+                  noWrap
+                  component="div"
+                  sx={{ display: { xs: "block", sm: "none" } }}
+                >
+                  Login
+                </Typography>
+              </IconButton>
+            )}
+            {!isLoggedIn && (
+              <IconButton
+                size="large"
+                aria-label=""
+                color="inherit"
+                onClick={handleOpenRegistration}
+              >
+                <Badge color="error">
+                  <AppRegistrationIcon />
+                </Badge>
+              </IconButton>
+            )}
             <IconButton
               size="large"
               aria-label=""
@@ -268,16 +275,18 @@ export default function PrimarySearchAppBar() {
                 <BuildIcon />
               </Badge>
             </IconButton>
-            <IconButton
-              size="large"
-              aria-label=""
-              color="inherit"
-              onClick={handleNavigateExplore}
-            >
-              <Badge color="error">
-                <DashboardIcon />
-              </Badge>
-            </IconButton>
+            {isLoggedIn && (
+              <IconButton
+                size="large"
+                aria-label=""
+                color="inherit"
+                onClick={handleNavigateExplore}
+              >
+                <Badge color="error">
+                  <DashboardIcon />
+                </Badge>
+              </IconButton>
+            )}
           </Box>
           <Box sx={{ display: { xs: "flex", md: "none" } }}>
             <IconButton

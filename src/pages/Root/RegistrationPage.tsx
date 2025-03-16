@@ -3,8 +3,14 @@ import { Helmet } from "react-helmet";
 import PageTemplate from "../../components/templates/PageTemplate";
 import Navbar from "../../components/navigation/NavBar";
 import Footer from "../../components/navigation/Footer";
+import { Box, useMediaQuery } from "@mui/material";
+import { RegistrationForm } from "../../components/forms/RegistrationForm";
+import FullscreenImage from "../../components/Views/FullScreenImage";
+import BannerImage from "../../assets/BannerImages/Brewery-Cover.webp"
 
 export default function Registration(): JSX.Element {
+  const isDesktop: boolean = useMediaQuery("(max-width: 1000px)");
+
   return (
     <>
       <Helmet>
@@ -17,13 +23,38 @@ export default function Registration(): JSX.Element {
       <Suspense>
         <PageTemplate id="registration-page">
           <Navbar />
-          <div
-            style={{
-              height: "250px",
+          <FullscreenImage
+            src={BannerImage}
+            alt="Banner Image"
+            children={
+              <Box
+                sx={{
+                  width: "100vw",
+                  height: "100vh",
+                  display: "flex",
+                  flexDirection: isDesktop ? "column" : "row",
+                  alignItems: "center",
+                  justifyContent: isDesktop ? "center" : "flex-end",
+                }}
+              >
+                <Box
+                  sx={{
+                    width: isDesktop ? "80%" : "40%",
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginLeft: isDesktop ? "0" : "auto",
+                    padding: 4,
+                  }}
+                >
+                  <RegistrationForm />
+                </Box>
+              </Box>
+            }
+            sx={{
+              filter: "blur(5px)",
             }}
-          >
-            Registration
-          </div>
+          />
           <Footer />
         </PageTemplate>
       </Suspense>
