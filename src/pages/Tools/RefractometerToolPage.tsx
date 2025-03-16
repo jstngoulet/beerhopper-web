@@ -375,7 +375,7 @@ export default function RefractometerToolPage(): JSX.Element {
                                 text: "Convert",
                                 isPrimary: true,
                                 action: handleRefractometerExit,
-                                isDisabled: refractometerValue === ""
+                                isDisabled: refractometerValue === "",
                               },
                             ]}
                           />
