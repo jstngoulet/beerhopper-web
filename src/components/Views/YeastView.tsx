@@ -7,6 +7,7 @@ import theme from "../Theme";
 import { useNavigate } from "react-router-dom";
 import YeastIcon from "../../assets/CellIcons/Default-Yeast-Icon.webp";
 import Yeast from "../../models/api/Models/Yeast";
+import fetchClient from "../../models/api/Client/fetchClient";
 
 export default function YeastView(): JSX.Element {
   const API_ENDPOINT = process.env.REACT_APP_API_SERVER_HOST || "";
@@ -49,10 +50,10 @@ export default function YeastView(): JSX.Element {
   useEffect(() => {
     if (isLoaded) return;
     
-    fetch('/yeasts')
+    fetchClient('/yeasts')
       .then((response) => response.json())
-      .then((data) => {
-        setYeastList(data);
+      .then((result) => {
+        setYeastList(result.data);
         setIsLoaded(!isLoaded);
       })
       .catch((error) => console.error("Error fetching Yeasts:", error));

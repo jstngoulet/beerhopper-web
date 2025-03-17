@@ -52,8 +52,8 @@ export default function GrainView(): JSX.Element {
     
     fetchClient("/grains")
       .then((response) => response.json())
-      .then((data) => {
-        setGrainsList(data);
+      .then((result) => {
+        setGrainsList(result.data);
         setIsLoaded(!isLoaded);
       })
       .catch((error) => console.error("Error fetching Grains:", error));

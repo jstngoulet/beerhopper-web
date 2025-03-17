@@ -52,8 +52,8 @@ export default function HopsView(): JSX.Element {
     
     fetchClient(`/hops`)
       .then((response) => response.json())
-      .then((data) => {
-        setHopsList(data);
+      .then((result) => {
+        setHopsList(result.data);
         setIsLoaded(!isLoaded);
       })
       .catch((error) => console.error("Error fetching Hops:", error));
