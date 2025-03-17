@@ -141,7 +141,7 @@ export default function ExplorePage(): JSX.Element {
 
   useEffect(() => {
     fetch(`${API_ENDPOINT}/grains`, {
-      mode: "cors",
+      // mode: "cors",
       headers: {
         "Content-Type": "application/json",
         // Authorization: "Bearer YOUR_API_TOKEN",
