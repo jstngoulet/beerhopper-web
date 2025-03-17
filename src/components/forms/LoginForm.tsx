@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { TextField, Button, Typography, Paper } from "@mui/material";
-// import { useNavigate } from "react-router-dom";
+import fetchClient from "../../models/api/Client/fetchClient";
+import { setAuthorization } from "../../models/api/Auth-Helpers";
 
 interface LoginFormProps {}
 
@@ -16,8 +17,8 @@ const LoginForm: React.FC<LoginFormProps> = () => {
   const handleSubmit = async () => {
     setErrorMessage("");
     try {
-      const response = await fetch(
-        `${process.env.REACT_APP_API_SERVER_HOST}/auth/login`,
+      const response = await fetchClient(
+        `/auth/login`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -35,11 +36,9 @@ const LoginForm: React.FC<LoginFormProps> = () => {
       }
 
       const data = await response.json();
-      console.log(`token: ${JSON.stringify(data)}`)
-      localStorage.setItem("token", data.token);
+      setAuthorization(data.id_token);
       window.location.href = "/explore";
     } catch (error) {
-      console.error("Login failed:", error);
       setErrorMessage(
         "Login failed. Please check your credentials and try again."
       );

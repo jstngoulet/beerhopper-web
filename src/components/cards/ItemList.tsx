@@ -12,7 +12,7 @@ export default function ItemList({ items }: ItemListProps): JSX.Element {
       {items.map((item) => (
         <Grid2
         //   columns={{xs: 1, sm: 2, md: 2, lg: 3}}
-          key={"id"}
+          key={item.id}
           direction={"row"}
           sx={{
             display: "flex",
@@ -23,6 +23,7 @@ export default function ItemList({ items }: ItemListProps): JSX.Element {
           spacing={1}
         >
           <ItemListCard
+            id={item.id}
             imageSrc={item.imageSrc}
             imageIcon={item.imageIcon}
             title={item.title}

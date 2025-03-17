@@ -34,13 +34,13 @@ import YeastPage from "./pages/Ingredients/YeastPage";
 import BrewDayPage from "./pages/BrewDay/BrewDayPage";
 
 
-import { isLoggedIn } from "./models/api/Auth-Helpers";
+import { determineIsLoggedIn } from "./models/api/Auth-Helpers";
 interface ProtectedRouteProps {
   element: JSX.Element;
 }
 
 const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ element }) => {
-  return isLoggedIn ? element : <Navigate to="/login" replace />;
+  return determineIsLoggedIn() ? element : <Navigate to="/login" replace />;
 };
 
 export default function Router(): React.JSX.Element {

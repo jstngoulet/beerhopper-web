@@ -49,12 +49,7 @@ export default function YeastView(): JSX.Element {
   useEffect(() => {
     if (isLoaded) return;
     
-    fetch(`${API_ENDPOINT}/yeasts`, {
-      headers: {
-        "Content-Type": "application/json",
-        // Authorization: "Bearer YOUR_API_TOKEN",
-      },
-    })
+    fetch('/yeasts')
       .then((response) => response.json())
       .then((data) => {
         setYeastList(data);
@@ -97,6 +92,7 @@ export default function YeastView(): JSX.Element {
               title: item.name,
               imageSrc: item.iconPath ? item.iconPath : YeastIcon,
               caption: item.summary,
+              id: item.id,
               onDetailsClick() {
                 console.log(JSON.stringify(item));
               },

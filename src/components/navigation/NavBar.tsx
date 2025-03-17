@@ -21,7 +21,7 @@ import logo from '../../assets/HomePage/Beer_Hopper_Banner.png'
 import SearchIcon from "@mui/icons-material/Search";
 import InputBase from "@mui/material/InputBase";
 import { styled, alpha } from "@mui/material/styles";
-import { isLoggedIn } from "../../models/api/Auth-Helpers";
+import { determineIsLoggedIn } from "../../models/api/Auth-Helpers";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -132,6 +132,8 @@ export default function PrimarySearchAppBar() {
   );
 
   const mobileMenuId = "primary-search-account-menu-mobile";
+  const isLoggedIn = determineIsLoggedIn()
+  ;
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}

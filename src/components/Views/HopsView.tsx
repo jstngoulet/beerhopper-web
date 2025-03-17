@@ -7,6 +7,7 @@ import theme from "../Theme";
 import { useNavigate } from "react-router-dom";
 import Hop from "../../models/api/Models/Hop";
 import HopIcon from "../../assets/CellIcons/Default-Hop-Icon.webp";
+import fetchClient from "../../models/api/Client/fetchClient";
 
 export default function HopsView(): JSX.Element {
   const API_ENDPOINT = process.env.REACT_APP_API_SERVER_HOST || "";
@@ -49,12 +50,7 @@ export default function HopsView(): JSX.Element {
   useEffect(() => {
     if (isLoaded) return;
     
-    fetch(`${API_ENDPOINT}/hops`, {
-      headers: {
-        "Content-Type": "application/json",
-        // Authorization: "Bearer YOUR_API_TOKEN",
-      },
-    })
+    fetchClient(`/hops`)
       .then((response) => response.json())
       .then((data) => {
         setHopsList(data);
@@ -97,6 +93,7 @@ export default function HopsView(): JSX.Element {
               title: item.name,
               imageSrc: item.iconPath ? item.iconPath : HopIcon,
               caption: item.summary,
+              id: item.id,
               onDetailsClick() {
                 console.log(JSON.stringify(item));
               },

@@ -9,6 +9,7 @@ import {
   Link,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { setAuthorization } from "../../models/api/Auth-Helpers";
 
 interface RegistrationFormProps {}
 
@@ -47,7 +48,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = () => {
       }
 
       console.log("Registration successful:", data);
-      localStorage.setItem("token", data.token);
+      setAuthorization(data.id_token)
       navigate("/explore");
     } catch (error) {
       console.error("Registration failed:", error);

@@ -10,6 +10,7 @@ import {
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 
 export interface ItemListCardProps {
+  id: string;
   imageSrc?: string;
   imageIcon?: React.ReactNode;
   title: string;
@@ -19,6 +20,7 @@ export interface ItemListCardProps {
 }
 
 const ItemListCard: React.FC<ItemListCardProps> = ({
+  id,
   imageSrc,
   imageIcon,
   title,

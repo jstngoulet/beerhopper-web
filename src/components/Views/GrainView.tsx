@@ -7,6 +7,7 @@ import Spacer from "../common/Spacer";
 import theme from "../Theme";
 import { useNavigate } from "react-router-dom";
 import GrainIcon from "../../assets/CellIcons/Default-Grain-Icon.webp";
+import fetchClient from "../../models/api/Client/fetchClient";
 
 export default function GrainView(): JSX.Element {
   const API_ENDPOINT = process.env.REACT_APP_API_SERVER_HOST || "";
@@ -48,13 +49,8 @@ export default function GrainView(): JSX.Element {
 
   useEffect(() => {
     if (isLoaded) return;
-
-    fetch(`${API_ENDPOINT}/grains`, {
-      headers: {
-        "Content-Type": "application/json",
-        // Authorization: "Bearer YOUR_API_TOKEN",
-      },
-    })
+    
+    fetchClient("/grains")
       .then((response) => response.json())
       .then((data) => {
         setGrainsList(data);
@@ -97,6 +93,7 @@ export default function GrainView(): JSX.Element {
               title: item.name,
               imageSrc: item.iconPath ? item.iconPath : GrainIcon,
               caption: item.summary,
+              id: item.id,
               onDetailsClick() {
                 console.log(JSON.stringify(item));
               },

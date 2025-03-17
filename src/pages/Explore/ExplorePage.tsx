@@ -15,7 +15,7 @@ import ItemList from "../../components/cards/ItemList";
 
 import { useNavigate } from "react-router-dom";
 import DashboardPageTemplate from "../../components/templates/DashboardPageTemplate";
-import { isLoggedIn } from "../../models/api/Auth-Helpers";
+import { determineIsLoggedIn } from "../../models/api/Auth-Helpers";
 import TitleView from "../../components/Views/TitleView";
 
 export default function ExplorePage(): JSX.Element {
@@ -39,6 +39,8 @@ export default function ExplorePage(): JSX.Element {
   const openForums = () => {
     navigate("/forums");
   };
+  
+  const isLoggedIn = determineIsLoggedIn();
 
   const primaryActions: JSX.Element = (
     <ExploreSection
@@ -66,36 +68,42 @@ export default function ExplorePage(): JSX.Element {
                 title: "Ingredients",
                 isFilled: true,
                 onDetailsClick: openIngredients,
+                id: "ingredients-btn",
               },
               {
                 imageIcon: <ForumIcon fontSize="medium" />,
                 title: "Forums",
                 isFilled: true,
                 onDetailsClick: openForums,
+                id: "forums-btn",
               },
               {
                 imageIcon: <SportsBarIcon fontSize="medium" />,
                 title: "Beers",
                 isFilled: true,
                 onDetailsClick: openBeers,
+                id: "beers-btn",
               },
               {
                 imageIcon: <MenuBookIcon fontSize="medium" />,
                 title: "Recipes",
                 isFilled: true,
                 onDetailsClick: openRecipes,
+                id: "recipes-btn",
               },
               {
                 imageIcon: <StorefrontIcon fontSize="medium" />,
                 title: "Breweries",
                 isFilled: true,
                 onDetailsClick: openBreweries,
+                id: "breweries-btn",
               },
               {
                 imageIcon: <GroupWorkIcon fontSize="medium" />,
                 title: "Start Brewing",
                 isFilled: true,
                 onDetailsClick: openBrewDay,
+                id: "brew-btn",
               },
             ]}
           />
