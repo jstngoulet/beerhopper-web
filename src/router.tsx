@@ -2,8 +2,8 @@ import { Routes, Route, BrowserRouter, Navigate } from "react-router-dom";
 import React, { JSX } from "react";
 
 import HomePage from "./pages/Root/HomePage";
-import LoginPage from "./pages/Root/LoginPage";
-import Registration from "./pages/Root/RegistrationPage";
+import LoginPage from "./pages/Auth/LoginPage";
+import Registration from "./pages/Auth/RegistrationPage";
 import ToolsHomePage from "./pages/Root/ToolsHomePage";
 import InfusionStepToolPage from "./pages/Tools/InfuionStepToolPage";
 import ExplorePage from "./pages/Explore/ExplorePage";
@@ -23,8 +23,18 @@ import BoilOffToolPage from "./pages/Tools/BoilOffToolPage";
 import DilutionToolPage from "./pages/Tools/DilutionToolPage";
 import WeightToVolumeToolPage from "./pages/Tools/WeightToVolumeToolPage";
 import CarbonationToolPage from "./pages/Tools/CarbonationToolPage";
-import { isLoggedIn } from "./models/api/Auth-Helpers";
+import IngredientsPage from "./pages/Ingredients/IngredientsPage";
+import BeerPage from "./pages/Root/BeerPage";
+import BreweriesPage from "./pages/Root/BreweriesPage";
+import RecipesPage from "./pages/Recipes/RecipesPage";
+import ForumsPage from "./pages/Root/ForumsPage";
+import GrainsPage from "./pages/Ingredients/GrainsPage";
+import HopsPage from "./pages/Ingredients/HopsPage";
+import YeastPage from "./pages/Ingredients/YeastPage";
+import BrewDayPage from "./pages/BrewDay/BrewDayPage";
 
+
+import { isLoggedIn } from "./models/api/Auth-Helpers";
 interface ProtectedRouteProps {
   element: JSX.Element;
 }
@@ -87,17 +97,20 @@ export default function Router(): React.JSX.Element {
         {/* Brew Sessions */}
         <Route
           path="/brew-sessions"
-          element={<ProtectedRoute element={<NotFoundPage />} />}
+          element={<ProtectedRoute element={<BrewDayPage />} />}
         />
 
+        {/*Ingredients Pages */}
+        <Route path="/ingredients/hops" element={<HopsPage />} />
+        <Route path="/ingredients/grains" element={<GrainsPage />} />
+        <Route path="/ingredients/yeasts" element={<YeastPage />} />
+        <Route path="/ingredients" element={<IngredientsPage />} />
+
         {/*Detail Pages */}
-        <Route path="/ingredients/hops" element={<NotFoundPage />} />
-        <Route path="/ingredients/grains" element={<NotFoundPage />} />
-        <Route path="/ingredients/yeasts" element={<NotFoundPage />} />
-        <Route path="/ingredients" element={<NotFoundPage />} />
-        <Route path="/beers" element={<NotFoundPage />} />
-        <Route path="/recipes" element={<NotFoundPage />} />
-        <Route path="/breweries" element={<NotFoundPage />} />
+        <Route path="/beers" element={<BeerPage />} />
+        <Route path="/recipes" element={<RecipesPage />} />
+        <Route path="/breweries" element={<BreweriesPage />} />
+        <Route path="/forums" element={<ForumsPage />} />
 
         {/* Not Found Page */}
         <Route path="/*" element={<NotFoundPage />} />
