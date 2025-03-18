@@ -24,13 +24,14 @@
     "react-router": "^7.2.0",
     "react-router-dom": "^7.3.0",
     "react-scripts": "^5.0.1",
+    "serve": "^14.2.4",
     "tailwindcss": "^4.0.9",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "dev": "react-scripts start",
-    "start": "react-scripts start",
+    "start": "npm i serve --legacy-peer-deps && serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
