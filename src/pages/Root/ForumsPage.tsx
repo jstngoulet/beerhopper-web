@@ -1,16 +1,20 @@
 import React, { JSX } from "react";
 import DashboardPageTemplate from "../../components/templates/DashboardPageTemplate";
 import TitleView from "../../components/Views/TitleView";
+import ForumPostForm from "../../components/forms/ForumPostForm";
 
 export default function ForumsPage(): JSX.Element {
   return (
     <>
       <DashboardPageTemplate
-        pageName={""}
-        pageDescription={""}
+        pageName={"Ask a Brewer"}
+        pageDescription={
+          "Have a question related to home or commercial brewing? Ask a question here for your peers to help you out!"
+        }
         pageContent={
           <>
             <TitleView title="Forums" />
+            <ForumPostForm />
           </>
         }
         id={""}
