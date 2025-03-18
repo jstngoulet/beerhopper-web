@@ -1,7 +1,7 @@
 import React, { JSX } from "react";
 import DashboardPageTemplate from "../../components/templates/DashboardPageTemplate";
-import TitleView from "../../components/Views/TitleView";
 import ForumPostForm from "../../components/forms/ForumPostForm";
+import ForumDashboardView from "../../components/Views/ForumDashboardView";
 
 export default function ForumsPage(): JSX.Element {
   return (
@@ -13,8 +13,8 @@ export default function ForumsPage(): JSX.Element {
         }
         pageContent={
           <>
-            <TitleView title="Forums" />
             <ForumPostForm />
+            <ForumDashboardView />
           </>
         }
         id={""}

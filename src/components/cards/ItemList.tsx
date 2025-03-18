@@ -1,14 +1,18 @@
 import React, { JSX } from "react";
 import ItemListCard, { ItemListCardProps } from "./ItemListCard";
-import { Grid2 } from "@mui/material";
+import { Breakpoint, Grid2 } from "@mui/material";
 
+type ResponsiveStyleValue<T> = T | Array<T | null> | {
+    [key in Breakpoint]?: T | null;
+};
 export interface ItemListProps {
   items: ItemListCardProps[];
+  columnOverride?: ResponsiveStyleValue<number>;
 }
 
-export default function ItemList({ items }: ItemListProps): JSX.Element {
+export default function ItemList({ items, columnOverride }: ItemListProps): JSX.Element {
   return (
-    <Grid2 container spacing={1} columns={{xs: 1, sm: 2, md: 2, xl: 3}}>
+    <Grid2 container spacing={1} columns={columnOverride || {xs: 1, sm: 2, md: 2, xl: 3}}>
       {items.map((item) => (
         <Grid2
         //   columns={{xs: 1, sm: 2, md: 2, lg: 3}}
