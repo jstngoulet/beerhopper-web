@@ -1,11 +1,30 @@
 interface ENV_KEYS {
-    SERVER_HOST: string;
-    SERVER_API_KEY: string;
+  SERVER_HOST: string;
+  SERVER_API_KEY: string;
+
+  FIREBASE_API_KEY: string;
+  FIREBASE_AUTH_DOMAIN: string;
+  FIREBASE_DB_URL: string;
+  FIRBASE_PROKECT_ID: string;
+  FIREBASE_STORAGE_BUCKET: string;
+  FIREBASE_MESSAGE_SENDER_ID: string;
+  FIREBASE_APP_ID: string;
 }
 
 const DEFAULT_KEYS: ENV_KEYS = {
-    SERVER_HOST: process.env.REACT_APP_API_SERVER_HOST || "", 
-    SERVER_API_KEY: process.env.REACT_APP_SERVER_API_KEY || ""
-}
+    
+    // Default
+  SERVER_HOST: process.env.REACT_APP_API_SERVER_HOST || "",
+  SERVER_API_KEY: process.env.REACT_APP_SERVER_API_KEY || "",
+
+  // Firebase
+  FIREBASE_API_KEY: process.env.REACT_APP_SERVER_API_KEY || "",
+  FIREBASE_AUTH_DOMAIN: process.env.REACT_APP_SERVER_API_KEY || "",
+  FIREBASE_DB_URL: process.env.REACT_APP_SERVER_API_KEY || "",
+  FIRBASE_PROKECT_ID: process.env.REACT_APP_SERVER_API_KEY || "",
+  FIREBASE_STORAGE_BUCKET: process.env.REACT_APP_SERVER_API_KEY || "",
+  FIREBASE_MESSAGE_SENDER_ID: process.env.REACT_APP_SERVER_API_KEY || "",
+  FIREBASE_APP_ID: process.env.REACT_APP_SERVER_API_KEY || "",
+};
 
 export default DEFAULT_KEYS;
